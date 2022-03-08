@@ -19,6 +19,6 @@
     "typeRoots": ["./node_modules/@types", "./src/types"],
     "baseUrl": "."
   },
-  "include": ["./src/**/*"],
+  "include": [".eslintrc.js", "./src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
