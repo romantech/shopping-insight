@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-non-null-assertion,@typescript-eslint/explicit-module-boundary-types */
 import React, { useState } from 'react';
 import moment from 'moment';
 import { DatePicker, notification, Space } from 'antd';
 
-interface DatePickerProps {
+interface UseDatePickerProps {
   initialValue?: moment.Moment;
-  type?: TimeUnit;
+  type: TimeUnit;
   size?: 'large' | 'middle' | 'small';
 }
 
@@ -13,13 +13,12 @@ export default function useDatePicker({
   initialValue = moment(),
   type = 'date',
   size = 'large',
-}: DatePickerProps): [() => JSX.Element, moment.Moment] {
+}: UseDatePickerProps) {
   const [selectedDate, setSelectedDate] = useState(initialValue);
   const [status, setStatus] = useState<'' | 'warning' | 'error'>('');
 
   const onChangeHandler = (date: moment.Moment) => {
     const isValid = date.isAfter('2017-08-01');
-    const validDate = isValid ? date : moment().subtract(7, 'days');
 
     if (!isValid) {
       notification.error({
@@ -28,7 +27,7 @@ export default function useDatePicker({
       });
     }
 
-    setSelectedDate(validDate);
+    setSelectedDate(date);
     setStatus(isValid ? '' : 'error');
   };
 
@@ -46,5 +45,5 @@ export default function useDatePicker({
     );
   }
 
-  return [DateInput, selectedDate];
+  return [DateInput, selectedDate] as const;
 }
