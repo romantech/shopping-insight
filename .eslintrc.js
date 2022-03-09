@@ -87,5 +87,7 @@ module.exports = {
       'error',
       { allowRequiredDefaults: true },
     ],
+    'react/require-default-props': 0,
+    'react/prop-types': 0,
   },
 };
