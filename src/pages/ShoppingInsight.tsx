@@ -1,7 +1,6 @@
 import React from 'react';
+import FormOptions from '../components/FormOptions';
 
-function ShoppingInsight(): JSX.Element {
-  return <h1>shopping insight</h1>;
+export default function ShoppingInsight(): JSX.Element {
+  return <FormOptions />;
 }
-
-export default ShoppingInsight;
