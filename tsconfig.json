@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "target": "esnext",
+    "target": "ESNext",
     "moduleResolution": "node",
     "lib": ["ES2015", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
@@ -10,15 +10,15 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "ESNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "downlevelIteration": true,
     "typeRoots": ["./node_modules/@types", "./src/types"],
-    "baseUrl": "."
+    "baseUrl": "src" // src 폴더를 기준 절대경로 설정 ex) components/hello.tsx
   },
-  "include": [".eslintrc.js", "./src/**/*"],
+  "include": ["babel-plugin-macros.config.js", ".eslintrc.js", "./src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
