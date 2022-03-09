@@ -9,8 +9,8 @@ import SingleDatePicker from './SingleDatePicker';
 
 export default function FormOptions(): JSX.Element {
   const [params, setParams] = useState<RequestParams>({
-    startDate: moment().subtract(7, 'days').format('YYYY-MM-DD'),
-    endDate: moment().format('YYYY-MM-DD'),
+    startDate: moment().subtract(7, 'days').format('YYYY-MM'),
+    endDate: moment().format('YYYY-MM'),
     timeUnit: 'date',
     category: '50000008',
     keyword: '',
@@ -29,12 +29,14 @@ export default function FormOptions(): JSX.Element {
         initialValue={params.startDate}
         endDate={params.endDate}
         callback={valueHandler}
+        type={params.timeUnit}
         paramKey="startDate"
       />
       <SingleDatePicker
         initialValue={params.endDate}
         startDate={params.startDate}
         callback={valueHandler}
+        type={params.timeUnit}
         paramKey="endDate"
       />
       <SelectForm

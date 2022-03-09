@@ -24,9 +24,11 @@ export default function SingleDatePicker({
 }: SingleDatePickerProps): JSX.Element {
   const [status, setStatus] = useState<'' | 'warning' | 'error'>('');
 
-  const onChangeHandler = (date: moment.Moment, dateString: string) => {
+  const dateFormat = type === 'date' ? 'YYYY-MM-DD' : 'YYYY-MM';
+
+  const onChangeHandler = (date: moment.Moment) => {
     const isValid =
-      date?.isAfter(startDate || '2017-08-01') &&
+      date?.isAfter(startDate || '2017-08') &&
       date?.isBefore(endDate || moment());
 
     if (!isValid && date) {
@@ -35,7 +37,8 @@ export default function SingleDatePicker({
           '2017년 8월부터 오늘까지만 조회할 수 있습니다. 다시 선택해주세요',
       });
     }
-    callback(paramKey, isValid ? dateString : '');
+    console.log(isValid);
+    callback(paramKey, isValid ? date.format(dateFormat) : '');
     setStatus(isValid || !date ? '' : 'error');
   };
 
@@ -44,10 +47,10 @@ export default function SingleDatePicker({
       <DatePicker
         size={size}
         placeholder={paramKey}
-        value={initialValue ? moment(initialValue) : undefined}
+        defaultValue={initialValue ? moment(initialValue) : undefined}
         status={status}
         picker={type}
-        onChange={(date, dateString) => onChangeHandler(date!, dateString)}
+        onChange={date => onChangeHandler(date!)}
       />
     </Space>
   );
