@@ -1,4 +1,8 @@
-type HandlerCallback = (type: keyof RequestParams, value: string) => void;
+type ValueType = string | number | boolean;
+type HandlerCallback = (
+  type: keyof RequestParams,
+  value: ValueType | Array<ValueType>,
+) => void;
 type TimeUnit = 'date' | 'week' | 'month';
 type Device = 'pc' | 'mo';
 type Gender = 'm' | 'f';

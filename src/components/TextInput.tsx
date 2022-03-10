@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from 'antd';
 
 interface TextInputProps {
@@ -12,14 +12,23 @@ export default function TextInput({
   callback,
   paramKey,
 }: TextInputProps): JSX.Element {
+  const [status, setStatus] = useState<'' | 'warning' | 'error'>('');
+
+  const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const isValid = target.value.length > 2;
+    setStatus(isValid ? '' : 'error');
+    callback(paramKey, target.value);
+  };
+
   return (
     <Input
       placeholder="Keyword"
       size="large"
       value={value}
-      maxLength={10}
-      style={{ width: 200 }}
-      onChange={({ target }) => callback(paramKey, target.value)}
+      maxLength={20}
+      status={status}
+      style={{ maxWidth: 200 }}
+      onChange={onChangeHandler}
     />
   );
 }

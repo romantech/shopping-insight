@@ -1,5 +1,6 @@
 import React from 'react';
 import { Select } from 'antd';
+import { CategoryList } from '../constants';
 
 const { Option } = Select;
 
@@ -7,7 +8,7 @@ interface SelectFormProps {
   value: string;
   callback: HandlerCallback;
   paramKey: keyof RequestParams;
-  options: Record<string, string>[];
+  options: CategoryList;
   size?: 'large' | 'middle' | 'small';
 }
 
@@ -28,9 +29,9 @@ export default function SelectForm({
       placeholder="Category"
       optionFilterProp="children"
     >
-      {options.map(({ name, key }) => (
+      {options.map(({ label, key }) => (
         <Option key={key} value={key}>
-          {name}
+          {label}
         </Option>
       ))}
     </Select>

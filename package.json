@@ -2,6 +2,7 @@
   "name": "shopping-insight-graph",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://openapi.naver.com",
   "dependencies": {
     "@redux-devtools/extension": "^3.2.2",
     "@types/node": "^16.11.26",
