@@ -106,28 +106,20 @@ export default function FormOptions(): JSX.Element {
 
 const StyledWrapper = styled.section`
   ${FlexCenterColumn};
-  gap: 1rem;
+  width: 100%;
+  gap: 2rem;
   h1 {
-    width: 15%;
+    //width: 15%;
     font-size: 1.8rem;
     font-weight: bold;
   }
-
-  & > div {
-    width: 100%;
-  }
 `;
 const StyledFields = styled.section`
-  width: 100%;
   ${FlexCenterRow};
   gap: 2rem;
 
   & > div {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+    ${FlexCenterRow};
     gap: 1rem;
   }
 `;

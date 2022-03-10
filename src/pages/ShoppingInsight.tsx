@@ -33,18 +33,19 @@ export default function ShoppingInsight(): JSX.Element {
 const StyledInsightWrapper = styled.section`
   width: 100%;
   height: 100%;
-  padding: 1rem;
+  overflow: hidden;
 `;
 
 const StyledFormOptions = styled.section`
   width: 100%;
   height: 30%;
-  padding: 1.5rem;
   display: flex;
   align-items: center;
+  background: #f2f4f4;
 `;
 
 const StyledLineChart = styled.section`
   ${FlexCenterRow};
+  background: rgba(234, 237, 237, 0.87);
   height: 70%;
 `;

@@ -1,3 +1,10 @@
+// process.env 타입
+declare namespace NodeJS {
+  interface ProcessEnv {
+    [key: string]: string;
+  }
+}
+
 type ValueType = string | number | boolean;
 type HandlerCallback = (
   type: keyof RequestParams,
@@ -21,13 +28,6 @@ type Category =
   | '50005542' // 도서
   | '50000009' // 여가/생활편의
   | '50000010'; // 면세점
-
-// process.env 타입
-declare namespace NodeJS {
-  interface ProcessEnv {
-    [key: string]: string;
-  }
-}
 
 interface RequestParams {
   startDate: string;
