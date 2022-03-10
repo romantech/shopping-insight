@@ -3,6 +3,7 @@ type HandlerCallback = (
   type: keyof RequestParams,
   value: ValueType | Array<ValueType>,
 ) => void;
+
 type TimeUnit = 'date' | 'week' | 'month';
 type Device = '' | 'pc' | 'mo';
 type Gender = '' | 'm' | 'f';
@@ -21,6 +22,13 @@ type Category =
   | '50000009' // 여가/생활편의
   | '50000010'; // 면세점
 
+// process.env 타입
+declare namespace NodeJS {
+  interface ProcessEnv {
+    [key: string]: string;
+  }
+}
+
 interface RequestParams {
   startDate: string;
   endDate: string;
@@ -38,7 +46,7 @@ interface Data {
   ratio: number;
 }
 
-interface Response {
+interface InsightResponse {
   startDate: string;
   endDate: string;
   timeUnit: TimeUnit;
