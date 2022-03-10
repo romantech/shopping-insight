@@ -109,14 +109,13 @@ const StyledWrapper = styled.section`
   width: 100%;
   gap: 2rem;
   h1 {
-    //width: 15%;
     font-size: 1.8rem;
     font-weight: bold;
   }
 `;
 const StyledFields = styled.section`
   ${FlexCenterRow};
-  gap: 2rem;
+  gap: 3rem;
 
   & > div {
     ${FlexCenterRow};

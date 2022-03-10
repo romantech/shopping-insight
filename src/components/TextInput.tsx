@@ -15,7 +15,7 @@ export default function TextInput({
   const [status, setStatus] = useState<'' | 'warning' | 'error'>('');
 
   const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    const isValid = target.value.length >= 2;
+    const isValid = target.value.length >= 1;
     setStatus(isValid ? '' : 'error');
     callback(paramKey, target.value);
   };
