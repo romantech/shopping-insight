@@ -4,12 +4,14 @@ import { CheckboxValueType } from 'antd/lib/checkbox/Group';
 import { SelectListType } from '../constants';
 
 interface GroupCheckboxProps {
+  value: Ages[];
   options: SelectListType;
   callback: HandlerCallback;
   paramKey: keyof RequestParams;
 }
 
 export default function GroupCheckbox({
+  value,
   options,
   callback,
   paramKey,
@@ -19,7 +21,7 @@ export default function GroupCheckbox({
   };
 
   return (
-    <Checkbox.Group onChange={onChangeHandler}>
+    <Checkbox.Group onChange={onChangeHandler} value={value}>
       {options.map(({ key, label }) => (
         <Checkbox key={key} value={key}>
           {label}

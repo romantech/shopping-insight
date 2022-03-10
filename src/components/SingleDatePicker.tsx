@@ -8,7 +8,7 @@ interface SingleDatePickerProps {
   paramKey: keyof RequestParams;
   endDate?: string;
   startDate?: string;
-  initialValue?: string;
+  value?: string;
   size?: 'large' | 'middle' | 'small';
 }
 
@@ -17,7 +17,7 @@ export default function SingleDatePicker({
   paramKey,
   endDate,
   startDate,
-  initialValue,
+  value,
   size = 'large',
 }: SingleDatePickerProps): JSX.Element {
   const [status, setStatus] = useState<'' | 'warning' | 'error'>('');
@@ -42,7 +42,7 @@ export default function SingleDatePicker({
       <DatePicker
         size={size}
         placeholder={paramKey}
-        defaultValue={initialValue ? moment(initialValue) : undefined}
+        value={value ? moment(value) : undefined}
         status={status}
         onChange={date => onChangeHandler(date!)}
       />

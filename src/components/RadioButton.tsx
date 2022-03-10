@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Radio, RadioChangeEvent } from 'antd';
 import { SelectListType } from '../constants';
 
 interface RadioButtonProps {
+  value: TimeUnit | Gender | Device;
   options: SelectListType;
   callback: HandlerCallback;
   paramKey: keyof RequestParams;
 }
 
 export default function RadioButton({
+  value,
   options,
   callback,
   paramKey,
 }: RadioButtonProps): JSX.Element {
-  const [value, setValue] = useState(options[0].key);
-
   const onChangeHandler = (e: RadioChangeEvent) => {
-    setValue(e.target.value);
     callback(paramKey, e.target.value);
   };
 

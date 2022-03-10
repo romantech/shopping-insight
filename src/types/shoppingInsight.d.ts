@@ -4,8 +4,8 @@ type HandlerCallback = (
   value: ValueType | Array<ValueType>,
 ) => void;
 type TimeUnit = 'date' | 'week' | 'month';
-type Device = 'pc' | 'mo';
-type Gender = 'm' | 'f';
+type Device = '' | 'pc' | 'mo';
+type Gender = '' | 'm' | 'f';
 type Ages = '' | '10' | '20' | '30' | '40' | '50' | '60';
 type Category =
   | '50000008' // 패션의류

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
-import moment from 'moment';
+import { useDispatch, useSelector } from 'react-redux';
 import { FlexCenterRow } from '../styles/commonStyles';
 import TextInput from './TextInput';
 import SelectForm from './SelectForm';
@@ -14,33 +14,27 @@ import {
 import SingleDatePicker from './SingleDatePicker';
 import GroupCheckbox from './GroupCheckbox';
 import RadioButton from './RadioButton';
+import { RootState } from '../modules';
+import { setParams } from '../modules/selectedParams';
 
 export default function FormOptions(): JSX.Element {
-  const [params, setParams] = useState<RequestParams>({
-    startDate: moment().subtract(7, 'days').format('YYYY-MM-DD'),
-    endDate: moment().format('YYYY-MM-DD'),
-    timeUnit: 'date',
-    category: '50000008',
-    keyword: '',
-  });
+  const { selectedParams: params } = useSelector((state: RootState) => state);
+  const dispatch = useDispatch();
 
   const valueHandler: HandlerCallback = (key, value) => {
-    setParams(prev => ({
-      ...prev,
-      [key]: value,
-    }));
+    dispatch(setParams(key, value));
   };
 
   return (
     <StyledWrapper>
       <SingleDatePicker
-        initialValue={params.startDate}
+        value={params.startDate}
         endDate={params.endDate}
         callback={valueHandler}
         paramKey="startDate"
       />
       <SingleDatePicker
-        initialValue={params.endDate}
+        value={params.endDate}
         startDate={params.startDate}
         callback={valueHandler}
         paramKey="endDate"
@@ -57,21 +51,25 @@ export default function FormOptions(): JSX.Element {
         paramKey="keyword"
       />
       <GroupCheckbox
+        value={params.ages as Ages[]}
         options={ageList}
         callback={valueHandler}
         paramKey="ages"
       />
       <RadioButton
+        value={params.timeUnit as TimeUnit}
         options={timeUnitList}
         callback={valueHandler}
         paramKey="timeUnit"
       />
       <RadioButton
+        value={params.gender as Gender}
         options={genderList}
         callback={valueHandler}
         paramKey="gender"
       />
       <RadioButton
+        value={params.device as Device}
         options={deviceList}
         callback={valueHandler}
         paramKey="device"
