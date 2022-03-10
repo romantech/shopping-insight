@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
+import { Spin } from 'antd';
 import FormOptions from '../components/FormOptions';
 import Chart from '../components/Chart';
 import { RootState } from '../modules';
-
-interface RenderData {
-  [key: string]: number | string;
-}
+import { FlexCenterRow } from '../styles/commonStyles';
 
 export default function ShoppingInsight(): JSX.Element {
   const { loading, results, error } = useSelector(
@@ -18,8 +16,16 @@ export default function ShoppingInsight(): JSX.Element {
 
   return (
     <StyledInsightWrapper>
-      <FormOptions />
-      {loading ? <div>로딩...</div> : data?.length > 0 && <Chart data={data} />}
+      <StyledFormOptions>
+        <FormOptions />
+      </StyledFormOptions>
+      <StyledLineChart>
+        {loading ? (
+          <Spin size="large" />
+        ) : (
+          data?.length > 0 && <Chart data={data} />
+        )}
+      </StyledLineChart>
     </StyledInsightWrapper>
   );
 }
@@ -28,4 +34,17 @@ const StyledInsightWrapper = styled.section`
   width: 100%;
   height: 100%;
   padding: 1rem;
+`;
+
+const StyledFormOptions = styled.section`
+  width: 100%;
+  height: 30%;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+`;
+
+const StyledLineChart = styled.section`
+  ${FlexCenterRow};
+  height: 70%;
 `;

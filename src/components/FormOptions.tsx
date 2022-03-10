@@ -106,9 +106,9 @@ export default function FormOptions(): JSX.Element {
 
 const StyledWrapper = styled.section`
   ${FlexCenterColumn};
-  height: 30%;
   gap: 1rem;
   h1 {
+    width: 15%;
     font-size: 1.8rem;
     font-weight: bold;
   }
