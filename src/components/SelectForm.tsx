@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select } from 'antd';
-import { CategoryList } from '../constants';
+import { SelectListType } from '../constants';
 
 const { Option } = Select;
 
@@ -8,7 +8,7 @@ interface SelectFormProps {
   value: string;
   callback: HandlerCallback;
   paramKey: keyof RequestParams;
-  options: CategoryList;
+  options: SelectListType;
   size?: 'large' | 'middle' | 'small';
 }
 

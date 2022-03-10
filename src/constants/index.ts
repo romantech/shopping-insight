@@ -1,6 +1,4 @@
-export type AgeList = typeof ageList;
-export type CategoryList = typeof categoryList;
-export type GenderList = typeof genderList;
+export type SelectListType = typeof ageList;
 
 export const categoryList = [
   {
@@ -82,11 +80,44 @@ export const ageList = [
 
 export const genderList = [
   {
+    key: '',
+    label: '전체',
+  },
+  {
     key: 'm',
     label: '남성',
   },
   {
     key: 'f',
     label: '여성',
+  },
+];
+export const deviceList = [
+  {
+    key: '',
+    label: '전체',
+  },
+  {
+    key: 'pc',
+    label: 'PC',
+  },
+  {
+    key: 'mo',
+    label: 'Mobile',
+  },
+];
+
+export const timeUnitList = [
+  {
+    key: 'date',
+    label: '일간',
+  },
+  {
+    key: 'week',
+    label: '주간',
+  },
+  {
+    key: 'month',
+    label: '월간',
   },
 ];
