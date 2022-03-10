@@ -16,7 +16,6 @@ import GroupCheckbox from './GroupCheckbox';
 import RadioButton from './RadioButton';
 import { RootState } from '../modules';
 import { setParams } from '../modules/selectedParams';
-import { getDataRequest } from '../modules/insightData';
 
 export default function FormOptions(): JSX.Element {
   const { selectedParams: params } = useSelector((state: RootState) => state);
@@ -24,10 +23,6 @@ export default function FormOptions(): JSX.Element {
 
   const valueHandler: HandlerCallback = (key, value) => {
     dispatch(setParams(key, value));
-  };
-
-  const buttonHandler = () => {
-    dispatch(getDataRequest(params));
   };
 
   return (
@@ -79,9 +74,6 @@ export default function FormOptions(): JSX.Element {
         callback={valueHandler}
         paramKey="device"
       />
-      <button type="button" onClick={buttonHandler}>
-        인증 요청
-      </button>
     </StyledWrapper>
   );
 }

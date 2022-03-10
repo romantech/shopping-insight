@@ -1,4 +1,4 @@
-export type SelectListType = typeof ageList;
+export type SelectListType = typeof categoryList;
 
 export const categoryList = [
   {
