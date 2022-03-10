@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "https://openapi.naver.com",
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@redux-devtools/extension": "^3.2.2",
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.39",

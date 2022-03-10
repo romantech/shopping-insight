@@ -42,17 +42,19 @@ interface RequestParams {
 
 interface Data {
   period: string;
-  group: Device;
+  group: Ages;
   ratio: number;
+}
+
+interface Result {
+  title: string;
+  keyword: Array<string>;
+  data: Data[];
 }
 
 interface InsightResponse {
   startDate: string;
   endDate: string;
   timeUnit: TimeUnit;
-  results: {
-    title: string;
-    keyword: Array<string>;
-    data: Data[];
-  };
+  results: Result[];
 }

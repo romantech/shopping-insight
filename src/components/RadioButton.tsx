@@ -7,6 +7,7 @@ interface RadioButtonProps {
   options: SelectListType;
   callback: HandlerCallback;
   paramKey: keyof RequestParams;
+  size?: 'large' | 'middle' | 'small';
 }
 
 export default function RadioButton({
@@ -14,13 +15,19 @@ export default function RadioButton({
   options,
   callback,
   paramKey,
+  size = 'large',
 }: RadioButtonProps): JSX.Element {
   const onChangeHandler = (e: RadioChangeEvent) => {
     callback(paramKey, e.target.value);
   };
 
   return (
-    <Radio.Group onChange={onChangeHandler} value={value} buttonStyle="solid">
+    <Radio.Group
+      onChange={onChangeHandler}
+      value={value}
+      buttonStyle="outline"
+      size={size}
+    >
       {options.map(({ key, label }) => (
         <Radio.Button key={key} value={key}>
           {label}

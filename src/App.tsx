@@ -12,5 +12,5 @@ export default function App(): JSX.Element {
 
 const StyledWrapper = styled.main`
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
 `;

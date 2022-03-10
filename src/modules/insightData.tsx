@@ -8,14 +8,14 @@ type InsightDataAction =
 interface InsightDataState {
   loading: boolean;
   error: Error | null;
-  data: Partial<InsightResponse>;
+  results: Result[];
 }
 
 // 기본값
 const initialState: InsightDataState = {
   loading: false,
   error: null,
-  data: {},
+  results: [],
 };
 
 export const GET_DATA_REQUEST = 'insightData/GET_DATA_REQUEST';
@@ -44,7 +44,7 @@ export default function reducer(
         ...state,
         loading: false,
         error: null,
-        data: action.payload,
+        results: action.payload.results,
       };
     case GET_DATA_FAILED:
       return {
