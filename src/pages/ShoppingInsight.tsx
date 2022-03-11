@@ -21,6 +21,13 @@ export default function ShoppingInsight(): JSX.Element {
       : (dummy as Data[]);
   const { group, renderData } = extractChartDataAndGroup(data);
 
+  console.log(`process.env.NODE_ENV: ${process.env.NODE_ENV}`);
+  console.log(
+    `process.env.REACT_APP_VERCEL_ENV: ${process.env.REACT_APP_VERCEL_ENV}`,
+  );
+  console.log(
+    `process.env.REACT_APP_NODE_ENV: ${process.env.REACT_APP_NODE_ENV}`,
+  );
   return (
     <StyledInsightWrapper>
       <StyledFormOptions>
