@@ -4,17 +4,15 @@ import { Input } from 'antd';
 interface TextInputProps {
   value: string;
   callback: HandlerCallback;
-  paramKey: keyof RequestParams;
+  paramKey: RequestParamKeys;
 }
-
-type Status = '' | 'warning' | 'error';
 
 export default function TextInput({
   value,
   callback,
   paramKey,
 }: TextInputProps): JSX.Element {
-  const [status, setStatus] = useState<Status>('');
+  const [status, setStatus] = useState<FormStatus>('');
 
   const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const isValid = target.value.length >= 1;

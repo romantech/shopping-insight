@@ -1,20 +1,7 @@
-// process.env 타입
-declare namespace NodeJS {
-  interface ProcessEnv {
-    [key: string]: string;
-  }
-}
-
-type ValueType = string | number | boolean;
-type HandlerCallback = (
-  type: keyof RequestParams,
-  value: ValueType | Array<ValueType>,
-) => void;
-
 type TimeUnit = 'date' | 'week' | 'month';
 type Device = '' | 'pc' | 'mo';
 type Gender = '' | 'm' | 'f';
-type Ages = '' | '10' | '20' | '30' | '40' | '50' | '60';
+type Ages = '10' | '20' | '30' | '40' | '50' | '60';
 type Category =
   | '50000008' // 패션의류
   | '50000000' // 생활/건강
@@ -30,6 +17,7 @@ type Category =
   | '50000010'; // 면세점
 
 type RequestParams = RequiredParams & OptionalParams;
+type RequestParamKeys = keyof RequestParams;
 
 interface RequiredParams {
   startDate: string;

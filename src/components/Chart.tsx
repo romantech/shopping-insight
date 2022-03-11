@@ -12,8 +12,8 @@ import {
 import { getLineColor } from '../lib/utils';
 
 interface LineChartProps {
-  data: Array<Record<string, string | number>>;
-  group: Array<string>;
+  data: Record<string, string | number>[];
+  group: Ages[];
 }
 
 export default function Chart({ data, group }: LineChartProps): JSX.Element {

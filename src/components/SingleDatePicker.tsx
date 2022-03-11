@@ -5,24 +5,23 @@ import { DatePicker, notification, Space } from 'antd';
 import { overDateMsg } from '../lib/constants';
 
 interface SingleDatePickerProps {
+  value: string;
   callback: HandlerCallback;
-  paramKey: keyof RequestParams;
+  paramKey: RequestParamKeys;
   endDate?: string;
   startDate?: string;
-  value?: string;
-  size?: 'large' | 'middle' | 'small';
+  size?: FormSize;
 }
-type Status = '' | 'warning' | 'error';
 
 export default function SingleDatePicker({
+  value,
   callback,
   paramKey,
   endDate,
   startDate,
-  value,
   size = 'large',
 }: SingleDatePickerProps): JSX.Element {
-  const [status, setStatus] = useState<Status>('');
+  const [status, setStatus] = useState<FormStatus>('');
 
   const onChangeHandler = (date: moment.Moment) => {
     const isValid =

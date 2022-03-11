@@ -72,7 +72,7 @@ export default function FormOptions(): JSX.Element {
             paramKey="keyword"
           />
           <RadioButton
-            value={params.timeUnit as TimeUnit}
+            value={params.timeUnit}
             options={timeUnitList}
             callback={onChangeHandler}
             paramKey="timeUnit"

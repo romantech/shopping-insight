@@ -1,13 +1,12 @@
 import React from 'react';
 import { Checkbox } from 'antd';
 import { CheckboxValueType } from 'antd/lib/checkbox/Group';
-import { SelectListType } from '../lib/constants';
 
 interface GroupCheckboxProps {
   value: Ages[];
-  options: SelectListType;
+  options: FormOptionList;
   callback: HandlerCallback;
-  paramKey: keyof RequestParams;
+  paramKey: RequestParamKeys;
 }
 
 export default function GroupCheckbox({

@@ -1,15 +1,14 @@
 import React from 'react';
 import { Select } from 'antd';
-import { SelectListType } from '../lib/constants';
 
 const { Option } = Select;
 
 interface SelectFormProps {
   value: string;
   callback: HandlerCallback;
-  paramKey: keyof RequestParams;
-  options: SelectListType;
-  size?: 'large' | 'middle' | 'small';
+  paramKey: RequestParamKeys;
+  options: FormOptionList;
+  size?: FormSize;
 }
 
 export default function SelectForm({

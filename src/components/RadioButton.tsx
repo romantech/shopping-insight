@@ -1,13 +1,12 @@
 import React from 'react';
 import { Radio, RadioChangeEvent } from 'antd';
-import { SelectListType } from '../lib/constants';
 
 interface RadioButtonProps {
   value: TimeUnit | Gender | Device;
-  options: SelectListType;
+  options: FormOptionList;
   callback: HandlerCallback;
-  paramKey: keyof RequestParams;
-  size?: 'large' | 'middle' | 'small';
+  paramKey: RequestParamKeys;
+  size?: FormSize;
 }
 
 export default function RadioButton({

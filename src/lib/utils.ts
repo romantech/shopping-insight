@@ -1,5 +1,5 @@
-type LineType = '10' | '20' | '30' | '40' | '50' | '60';
-
+// export type LineTypeKeys = keyof typeof LineChartLegendColor;
+export type LineColors = typeof LineChartLegendColor[Ages];
 export const LineChartLegendColor = {
   '10': '#C0392B ',
   '20': '#AF7AC5',
@@ -9,14 +9,14 @@ export const LineChartLegendColor = {
   '60': '#2C3E50 ',
 };
 
-export const getLineColor = (group: string): string => {
-  return LineChartLegendColor[group as LineType];
+export const getLineColor = (group: Ages): LineColors => {
+  return LineChartLegendColor[group];
 };
 
 type RenderData = { [key: string]: number | string };
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function extractChartDataAndGroup(data: Data[]) {
-  const group: Set<string> = new Set();
+  const group: Set<Ages> = new Set();
 
   const renderData = data?.reduce((acc, cur) => {
     const idx = acc.findIndex(el => el.period === cur.period);
