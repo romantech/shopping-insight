@@ -6,26 +6,28 @@ import FormOptions from '../components/FormOptions';
 import { RootState } from '../modules';
 import { FlexCenterRow } from '../styles/commonStyles';
 import Chart from '../components/Chart';
+import { extractRenderDataAndGroup } from '../utils';
+import { introduceMsg, noDataMsg } from '../constants';
 
 export default function ShoppingInsight(): JSX.Element {
   const { loading, response, error } = useSelector(
     (state: RootState) => state.insightData,
   );
 
-  const data = response[0]?.data;
+  const { group, renderData } = extractRenderDataAndGroup(response[0]?.data);
   return (
     <StyledInsightWrapper>
       <StyledFormOptions>
         <FormOptions />
-        <StyledSpan>쇼핑인사이트 키워드 연령별 트렌드 조회</StyledSpan>
+        <StyledSpan>{introduceMsg}</StyledSpan>
       </StyledFormOptions>
       <StyledLineChart>
         {loading ? (
           <Spin size="large" />
-        ) : data?.length > 0 && error === null ? (
-          <Chart data={data} />
+        ) : renderData?.length && error === null ? (
+          <Chart data={renderData} group={group} />
         ) : (
-          <Empty description="데이터가 없어요! 필수 항목을 모두 입력한 후 검색해보세요" />
+          <Empty description={noDataMsg} />
         )}
       </StyledLineChart>
     </StyledInsightWrapper>

@@ -12,35 +12,18 @@ import {
 import { getLineColor } from '../utils';
 
 interface LineChartProps {
-  data: Data[];
+  data: Array<Record<string, string | number>>;
+  group: Array<string>;
 }
 
-interface RenderData {
-  [key: string]: number | string;
-}
-
-export default function Chart({ data }: LineChartProps): JSX.Element | null {
-  const group: Set<string> = new Set([]);
-  const renderData = data.reduce((acc: RenderData[], cur) => {
-    const idx = acc.findIndex(el => el.period === cur.period);
-    if (!group.has(cur.group)) group.add(cur.group);
-
-    if (idx === -1) {
-      acc.push({
-        period: cur.period,
-        [cur.group]: cur.ratio,
-      });
-    } else {
-      acc[idx][cur.group] = cur.ratio;
-    }
-
-    return acc;
-  }, []);
-
+export default function Chart({
+  data,
+  group,
+}: LineChartProps): JSX.Element | null {
   return (
     <ResponsiveContainer width="90%" height="80%">
       <LineChart
-        data={renderData}
+        data={data}
         margin={{
           top: 5,
           right: 40,
@@ -53,7 +36,7 @@ export default function Chart({ data }: LineChartProps): JSX.Element | null {
         <YAxis />
         <Tooltip />
         <Legend verticalAlign="top" height={36} iconType="rect" iconSize={20} />
-        {[...group].sort().map(g => (
+        {group.map(g => (
           <Line
             name={`${g}대`} // legend 에 표시될 이름
             key={g}
