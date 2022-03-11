@@ -16,10 +16,9 @@ export default function ShoppingInsight(): JSX.Element {
   );
 
   const data =
-    process.env.NODE_ENV !== 'production'
+    process.env.REACT_APP_VERCEL_ENV !== 'production'
       ? response[0]?.data
       : (dummy as Data[]);
-
   const { group, renderData } = extractChartDataAndGroup(data);
 
   return (
