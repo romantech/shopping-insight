@@ -8,13 +8,20 @@ import { FlexCenterRow } from '../styles/commonStyles';
 import Chart from '../components/Chart';
 import { extractChartDataAndGroup } from '../utils';
 import { introduceMsg, noDataMsg } from '../constants';
+import dummy from '../utils/dummy';
 
 export default function ShoppingInsight(): JSX.Element {
   const { loading, response, error } = useSelector(
     (state: RootState) => state.insightData,
   );
 
-  const { group, renderData } = extractChartDataAndGroup(response[0]?.data);
+  const data =
+    process.env.NODE_ENV !== 'production'
+      ? response[0]?.data
+      : (dummy as Data[]);
+
+  const { group, renderData } = extractChartDataAndGroup(data);
+
   return (
     <StyledInsightWrapper>
       <StyledFormOptions>
