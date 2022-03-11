@@ -1,20 +1,22 @@
 type LineType = '10' | '20' | '30' | '40' | '50' | '60';
+
+export const LineChartLegendColor = {
+  '10': '#C0392B ',
+  '20': '#AF7AC5',
+  '30': '#5DADE2',
+  '40': '#1E8449',
+  '50': '#D4AC0D',
+  '60': '#2C3E50 ',
+};
+
 export const getLineColor = (group: string): string => {
-  const colorScheme = {
-    '10': '#C0392B ',
-    '20': '#AF7AC5',
-    '30': '#5DADE2',
-    '40': '#1E8449',
-    '50': '#D4AC0D',
-    '60': '#2C3E50 ',
-  };
-  return colorScheme[group as LineType];
+  return LineChartLegendColor[group as LineType];
 };
 
 type RenderData = { [key: string]: number | string };
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function extractRenderDataAndGroup(data: Data[]) {
-  const group: Set<string> = new Set([]);
+export function extractChartDataAndGroup(data: Data[]) {
+  const group: Set<string> = new Set();
 
   const renderData = data?.reduce((acc, cur) => {
     const idx = acc.findIndex(el => el.period === cur.period);

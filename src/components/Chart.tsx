@@ -16,10 +16,7 @@ interface LineChartProps {
   group: Array<string>;
 }
 
-export default function Chart({
-  data,
-  group,
-}: LineChartProps): JSX.Element | null {
+export default function Chart({ data, group }: LineChartProps): JSX.Element {
   return (
     <ResponsiveContainer width="90%" height="80%">
       <LineChart

@@ -10,6 +10,7 @@ import {
   categoryList,
   deviceList,
   genderList,
+  inputRequireMsg,
   requiredParamKeys,
   timeUnitList,
 } from '../constants';
@@ -36,7 +37,8 @@ export default function FormOptions(): JSX.Element {
       dispatch(getDataRequest(params));
     } else {
       notification.error({
-        message: '필수 항목을 모두 입력 해주세요',
+        duration: 2,
+        message: inputRequireMsg,
       });
     }
   };

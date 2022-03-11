@@ -6,7 +6,7 @@ import FormOptions from '../components/FormOptions';
 import { RootState } from '../modules';
 import { FlexCenterRow } from '../styles/commonStyles';
 import Chart from '../components/Chart';
-import { extractRenderDataAndGroup } from '../utils';
+import { extractChartDataAndGroup } from '../utils';
 import { introduceMsg, noDataMsg } from '../constants';
 
 export default function ShoppingInsight(): JSX.Element {
@@ -14,7 +14,7 @@ export default function ShoppingInsight(): JSX.Element {
     (state: RootState) => state.insightData,
   );
 
-  const { group, renderData } = extractRenderDataAndGroup(response[0]?.data);
+  const { group, renderData } = extractChartDataAndGroup(response[0]?.data);
   return (
     <StyledInsightWrapper>
       <StyledFormOptions>

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { DatePicker, notification, Space } from 'antd';
+import { overDateMsg } from '../constants';
 
 interface SingleDatePickerProps {
   callback: HandlerCallback;
@@ -30,8 +31,8 @@ export default function SingleDatePicker({
 
     if (!isValid && date) {
       notification.error({
-        message:
-          '2017년 8월부터 오늘까지만 조회할 수 있어요. 다시 선택해주세요',
+        duration: 2,
+        message: overDateMsg,
       });
     }
     callback(paramKey, isValid ? date.format('YYYY-MM-DD') : '');
