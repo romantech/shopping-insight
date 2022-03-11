@@ -7,15 +7,18 @@ interface TextInputProps {
   paramKey: keyof RequestParams;
 }
 
+type Status = '' | 'warning' | 'error';
+
 export default function TextInput({
   value,
   callback,
   paramKey,
 }: TextInputProps): JSX.Element {
-  const [status, setStatus] = useState<'' | 'warning' | 'error'>('');
+  const [status, setStatus] = useState<Status>('');
 
   const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const isValid = target.value.length >= 1;
+
     setStatus(isValid ? '' : 'error');
     callback(paramKey, target.value);
   };

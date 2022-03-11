@@ -1,5 +1,13 @@
 export type SelectListType = typeof categoryList;
 
+export const requiredParamKeys: Array<keyof RequiredParams> = [
+  'startDate',
+  'endDate',
+  'category',
+  'keyword',
+  'timeUnit',
+];
+
 export const categoryList = [
   {
     key: '50000008',

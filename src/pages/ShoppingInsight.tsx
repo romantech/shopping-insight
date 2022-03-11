@@ -25,7 +25,7 @@ export default function ShoppingInsight(): JSX.Element {
         ) : data?.length > 0 && error === null ? (
           <Chart data={data} />
         ) : (
-          <Empty description="데이터가 없어요! 필수 항목을 모두 선택한 뒤 검색해보세요" />
+          <Empty description="데이터가 없어요! 필수 항목을 모두 입력한 후 검색해보세요" />
         )}
       </StyledLineChart>
     </StyledInsightWrapper>

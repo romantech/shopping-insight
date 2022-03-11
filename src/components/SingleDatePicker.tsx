@@ -11,6 +11,7 @@ interface SingleDatePickerProps {
   value?: string;
   size?: 'large' | 'middle' | 'small';
 }
+type Status = '' | 'warning' | 'error';
 
 export default function SingleDatePicker({
   callback,
@@ -20,12 +21,12 @@ export default function SingleDatePicker({
   value,
   size = 'large',
 }: SingleDatePickerProps): JSX.Element {
-  const [status, setStatus] = useState<'' | 'warning' | 'error'>('');
+  const [status, setStatus] = useState<Status>('');
 
   const onChangeHandler = (date: moment.Moment) => {
     const isValid =
-      date?.isAfter(startDate || '2017-07-31') &&
-      date?.isBefore(endDate || moment());
+      date?.isAfter(moment(startDate || '2017-07-31').subtract(1, 'day')) &&
+      date?.isBefore(moment(endDate || new Date()).add(endDate ? 1 : 0, 'day'));
 
     if (!isValid && date) {
       notification.error({
@@ -36,13 +37,12 @@ export default function SingleDatePicker({
     callback(paramKey, isValid ? date.format('YYYY-MM-DD') : '');
     setStatus(isValid || !date ? '' : 'error');
   };
-
   return (
     <Space direction="vertical">
       <DatePicker
         size={size}
         placeholder={paramKey}
-        value={value ? moment(value) : undefined}
+        value={value ? moment(value) : null}
         status={status}
         onChange={date => onChangeHandler(date!)}
       />

@@ -29,12 +29,17 @@ type Category =
   | '50000009' // 여가/생활편의
   | '50000010'; // 면세점
 
-interface RequestParams {
+type RequestParams = RequiredParams & OptionalParams;
+
+interface RequiredParams {
   startDate: string;
   endDate: string;
   timeUnit: TimeUnit;
   category: Category;
   keyword: string;
+}
+
+interface OptionalParams {
   device?: Device;
   gender?: Gender;
   ages?: Ages[];

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from 'antd';
+import { Button, notification } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import TextInput from './TextInput';
 import SelectForm from './SelectForm';
@@ -10,6 +10,7 @@ import {
   categoryList,
   deviceList,
   genderList,
+  requiredParamKeys,
   timeUnitList,
 } from '../constants';
 import SingleDatePicker from './SingleDatePicker';
@@ -29,7 +30,15 @@ export default function FormOptions(): JSX.Element {
   };
 
   const searchHandler = () => {
-    dispatch(getDataRequest(params));
+    const isValid = requiredParamKeys.every(field => params[field].length > 0);
+
+    if (isValid) {
+      dispatch(getDataRequest(params));
+    } else {
+      notification.error({
+        message: '필수 항목을 모두 입력 해주세요',
+      });
+    }
   };
 
   return (
