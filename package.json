@@ -2,7 +2,6 @@
   "name": "shopping-insight-graph",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://openapi.naver.com",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@redux-devtools/extension": "^3.2.2",
@@ -55,6 +54,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.3",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "http-proxy-middleware": "^2.0.3",
     "prettier": "2.5.1"
   }
 }

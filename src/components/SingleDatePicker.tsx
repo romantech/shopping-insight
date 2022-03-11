@@ -24,13 +24,13 @@ export default function SingleDatePicker({
 
   const onChangeHandler = (date: moment.Moment) => {
     const isValid =
-      date?.isAfter(startDate || '2017-08') &&
+      date?.isAfter(startDate || '2017-07-31') &&
       date?.isBefore(endDate || moment());
 
     if (!isValid && date) {
       notification.error({
         message:
-          '2017년 8월부터 오늘까지만 조회할 수 있습니다. 다시 선택해주세요',
+          '2017년 8월부터 오늘까지만 조회할 수 있어요. 다시 선택해주세요',
       });
     }
     callback(paramKey, isValid ? date.format('YYYY-MM-DD') : '');

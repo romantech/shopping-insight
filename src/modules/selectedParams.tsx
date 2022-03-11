@@ -8,7 +8,7 @@ const initialState: RequestParams = {
   startDate: moment().subtract(7, 'days').format('YYYY-MM-DD'),
   endDate: moment().format('YYYY-MM-DD'),
   timeUnit: 'date',
-  category: '50000008',
+  category: '50000003',
   keyword: '',
   device: '',
   gender: '',

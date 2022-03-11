@@ -1,6 +1,6 @@
 import axios, { AxiosPromise, CancelTokenSource } from 'axios';
 
-axios.defaults.baseURL = 'v1/datalab/';
+axios.defaults.baseURL = 'v1/datalab';
 axios.defaults.headers.common['X-Naver-Client-Id'] =
   process.env.REACT_APP_CLIENT_ID;
 axios.defaults.headers.common['X-Naver-Client-Secret'] =
