@@ -9,7 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { getLineColor } from '../utils';
+import { getLineColor } from '../lib/utils';
 
 interface LineChartProps {
   data: Array<Record<string, string | number>>;

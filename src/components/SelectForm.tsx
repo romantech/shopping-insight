@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select } from 'antd';
-import { SelectListType } from '../constants';
+import { SelectListType } from '../lib/constants';
 
 const { Option } = Select;
 

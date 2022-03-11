@@ -1,6 +1,6 @@
 import React from 'react';
 import { Radio, RadioChangeEvent } from 'antd';
-import { SelectListType } from '../constants';
+import { SelectListType } from '../lib/constants';
 
 interface RadioButtonProps {
   value: TimeUnit | Gender | Device;

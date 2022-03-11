@@ -13,7 +13,7 @@ import {
   inputRequireMsg,
   requiredParamKeys,
   timeUnitList,
-} from '../constants';
+} from '../lib/constants';
 import SingleDatePicker from './SingleDatePicker';
 import GroupCheckbox from './GroupCheckbox';
 import RadioButton from './RadioButton';

@@ -6,9 +6,9 @@ import FormOptions from '../components/FormOptions';
 import { RootState } from '../modules';
 import { FlexCenterRow } from '../styles/commonStyles';
 import Chart from '../components/Chart';
-import { extractChartDataAndGroup } from '../utils';
-import { introduceMsg, noDataMsg } from '../constants';
-import dummy from '../utils/dummy';
+import { extractChartDataAndGroup } from '../lib/utils';
+import { introduceMsg, noDataMsg } from '../lib/constants';
+import dummy from '../lib/dummy';
 
 export default function ShoppingInsight(): JSX.Element {
   const { loading, response, error } = useSelector(
@@ -16,18 +16,11 @@ export default function ShoppingInsight(): JSX.Element {
   );
 
   const data =
-    process.env.REACT_APP_VERCEL_ENV !== 'production'
-      ? response[0]?.data
-      : (dummy as Data[]);
+    process.env.NODE_ENV === 'production'
+      ? (dummy as Data[])
+      : response[0]?.data;
   const { group, renderData } = extractChartDataAndGroup(data);
 
-  console.log(`process.env.NODE_ENV: ${process.env.NODE_ENV}`);
-  console.log(
-    `process.env.REACT_APP_VERCEL_ENV: ${process.env.REACT_APP_VERCEL_ENV}`,
-  );
-  console.log(
-    `process.env.REACT_APP_NODE_ENV: ${process.env.REACT_APP_NODE_ENV}`,
-  );
   return (
     <StyledInsightWrapper>
       <StyledFormOptions>
