@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# 아이겐코리아 프론트엔드 사전과제
+<img width="1358" alt="20220311_172923@2x" src="https://user-images.githubusercontent.com/8604840/157831711-72c933cc-5ff7-4796-ae27-29faacf0690f.png">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 지원자 정보
+- 이름 : 장요한
+- 직무 : 프론트엔드(주니어)
+- 이메일 : ismedusa@gmail.com
 
-In the project directory, you can run:
 
-### `npm start`
+## 프로젝트 실행 방법
+1. **레포지토리 클론 :** 터미널에서 `git clone https://github.com/romantech/shopping-insight-graph.git` 입력
+2. **종속성 설치 :** 터미널에서 `npm install` 입력
+3. **환경 변수 세팅 :** `.env.example` 파일 이름을 `.env` 으로 변경 후 네이버 오픈 API의 ID/SECRET 입력(본인 계정)
+4. **프로젝트 시작 :** 터미널에서 `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 사용 스택
+- React + TypeScript
+- Redux + Saga
+- Styled-Components + Ant Design
+- ESLint(Airbnb 규칙 적용) + Prettier
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 필수 구현
+- ✅ 쇼핑 인사이트 - 키워드 연령별 트렌드 조회 데이터 사용
+- ✅ 연령별 트렌드 조회 파라미터를 사용자가 입력할 수 있도록 작성
+- ✅ API Key는 환경 변수에 저장
+- ✅ CORS 오류 해결
+  - [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware) 라이브러리를 이용해 Proxy 추가
+  - React Script 5.0은 package.json 프록시 추가하면 오류 발생(참고 [링크](https://github.com/facebook/create-react-app/issues/11762))
+- ✅ 차트 라이브러리([Rechart](https://recharts.org/en-US/))를 이용해 데이터 시각화
+- ✅ 연령 옵션 다중 선택 구현
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 선택 구현
+- ✅ Antd 활용
+- ✅ Redux-Saga 비동기 처리(API 호출)
+- ✅ Redux-Persist 활용(검색 파라미터 및 조회 결과 데이터 로컬스토리에 저장)
+- ❌ Custom Hook 활용(`useDebounce` 훅만 추가해놓고 사용하지는 않음)
