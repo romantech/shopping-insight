@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
 import { Empty, Spin } from 'antd';
-import FormOptions from '../components/FormOptions';
+import FieldContainer from '../components/FieldContainer';
 import { RootState } from '../modules';
 import { FlexCenterRow } from '../styles/commonStyles';
-import Chart from '../components/Chart';
+import Chart from '../components/forms/Chart';
 import { extractChartDataAndGroup } from '../lib/utils';
 import { introduceMsg, noDataMsg } from '../lib/constants';
 import dummy from '../lib/dummy';
@@ -24,7 +24,7 @@ export default function ShoppingInsight(): JSX.Element {
   return (
     <StyledInsightWrapper>
       <StyledFormOptions>
-        <FormOptions />
+        <FieldContainer />
         <StyledSpan>{introduceMsg}</StyledSpan>
       </StyledFormOptions>
       <StyledLineChart>

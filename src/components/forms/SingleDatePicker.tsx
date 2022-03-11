@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import { DatePicker, notification, Space } from 'antd';
-import { overDateMsg } from '../lib/constants';
+import { overDateMsg } from '../../lib/constants';
 
 interface SingleDatePickerProps {
   value: string;

@@ -7,7 +7,7 @@ declare namespace NodeJS {
 
 type ValueType = string | number | boolean;
 type HandlerCallback = (
-  type: keyof RequestParams,
+  type: RequestParamKeys,
   value: ValueType | Array<ValueType>,
 ) => void;
 
