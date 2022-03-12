@@ -1,12 +1,16 @@
+export const TODAY_DATE_TXT = '오늘 날짜';
+export const START_DATE_TXT = '시작 날짜';
+export const END_DATE_TXT = '종료 날짜';
 export const REQUIRED_FIELD_KO_TXT = '필수 항목';
 export const OPTIONAL_FIELD_KO_TXT = '옵션 항목';
-export const SEARCH_BTN_TXT = 'Search';
-export const OVER_DATE_MSG =
-  '2017년 8월부터 오늘까지만 조회할 수 있어요. 다시 선택하세요';
-export const INPUT_REQUIRED_MSG = '필수 항목을 모두 입력하세요';
-export const INTRODUCE_MSG = '쇼핑인사이트 키워드 연령별 트렌드 조회';
+export const SEARCH_BTN_TXT = 'SEARCH';
+export const INPUT_KEYWORD_PLACEHOLDER = '키워드를 입력하세요';
+export const INTRODUCE_MSG = '쇼핑인사이트 키워드/연령별 트렌드 조회';
 export const NO_DATA_MSG =
   '데이터가 없어요! 필수 항목을 모두 입력한 후 검색해보세요';
+
+const age = ['10', '20', '30', '40', '50', '60'];
+export const ageList = age.map(el => ({ key: el, label: `${el}대` }));
 
 export const categoryList = [
   {
@@ -56,33 +60,6 @@ export const categoryList = [
   {
     key: '50000010',
     label: '면세점',
-  },
-];
-
-export const ageList = [
-  {
-    key: '10',
-    label: '10대',
-  },
-  {
-    key: '20',
-    label: '20대',
-  },
-  {
-    key: '30',
-    label: '30대',
-  },
-  {
-    key: '40',
-    label: '40대',
-  },
-  {
-    key: '50',
-    label: '50대',
-  },
-  {
-    key: '60',
-    label: '60대',
   },
 ];
 

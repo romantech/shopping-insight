@@ -52,7 +52,6 @@ const StyledSpan = styled.span`
 const StyledInsightWrapper = styled.section`
   width: 100%;
   height: 100%;
-  overflow: hidden;
 `;
 
 const StyledFormOptions = styled.section`
@@ -62,11 +61,13 @@ const StyledFormOptions = styled.section`
   display: flex;
   align-items: center;
   background: #f2f4f4;
+  overflow: hidden;
 `;
 
 const StyledLineChart = styled.section`
   ${FlexCenterRow};
   background: rgba(234, 237, 237, 0.87);
+  width: 100%;
   height: 70%;
 
   .ant-empty-description {

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, notification } from 'antd';
+import { Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { RootState } from 'modules';
 import {
-  INPUT_REQUIRED_MSG,
   OPTIONAL_FIELD_KO_TXT,
   REQUIRED_FIELD_KO_TXT,
   SEARCH_BTN_TXT,
@@ -43,12 +42,8 @@ export default function FieldContainer({
 
   const buttonHandler = () => {
     if (isValid) {
-      dispatch(getInsightDataRequest({ ...requiredParams, ...optionalParams }));
-    } else {
-      notification.error({
-        duration: 2,
-        message: INPUT_REQUIRED_MSG,
-      });
+      const payload = { ...requiredParams, ...optionalParams };
+      dispatch(getInsightDataRequest(payload));
     }
   };
 
