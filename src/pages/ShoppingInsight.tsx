@@ -2,24 +2,21 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
 import { Empty, Spin } from 'antd';
-import FieldContainer from '../components/FieldContainer';
-import { RootState } from '../modules';
-import { FlexCenterRow } from '../styles/commonStyles';
-import Chart from '../components/forms/Chart';
-import { extractChartDataAndGroup } from '../lib/utils';
-import { introduceMsg, noDataMsg } from '../lib/constants';
-import dummy from '../lib/dummy';
+import FieldContainer from 'components/FieldContainer';
+import { RootState } from 'modules';
+import { FlexCenterRow } from 'styles/commonStyles';
+import SimpleLineChart from 'components/charts/SimpleLineChart';
+import { introduceMsg, noDataMsg } from 'lib/constants';
+import dummy from 'lib/dummy';
 
 export default function ShoppingInsight(): JSX.Element {
-  const { loading, response, error } = useSelector(
+  const { loading, rawData, renderData, error } = useSelector(
     (state: RootState) => state.insightData,
   );
 
-  const data =
-    process.env.NODE_ENV === 'production'
-      ? (dummy as Data[])
-      : response[0]?.data;
-  const { group, renderData } = extractChartDataAndGroup(data);
+  const isProd = process.env.NODE_ENV === 'production';
+  const hasData = isProd ? true : !!rawData;
+  const data = isProd ? dummy : renderData;
 
   return (
     <StyledInsightWrapper>
@@ -30,8 +27,8 @@ export default function ShoppingInsight(): JSX.Element {
       <StyledLineChart>
         {loading ? (
           <Spin size="large" />
-        ) : renderData?.length && error === null ? (
-          <Chart data={renderData} group={group} />
+        ) : hasData && error === null ? (
+          <SimpleLineChart metrics={data.metrics} groups={data.groups} />
         ) : (
           <Empty description={noDataMsg} />
         )}

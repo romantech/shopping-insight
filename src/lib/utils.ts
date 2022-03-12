@@ -13,14 +13,13 @@ export const getLineColor = (group: Ages): LineColors => {
   return LineChartLegendColor[group];
 };
 
-type RenderData = { [key: string]: number | string };
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function extractChartDataAndGroup(data: Data[]) {
-  const group: Set<Ages> = new Set();
+  const groups: Set<Ages> = new Set();
 
-  const renderData = data?.reduce((acc, cur) => {
+  const metrics = data?.reduce((acc, cur) => {
     const idx = acc.findIndex(el => el.period === cur.period);
-    if (!group.has(cur.group)) group.add(cur.group);
+    if (!groups.has(cur.group)) groups.add(cur.group);
 
     if (idx === -1) {
       acc.push({
@@ -32,7 +31,7 @@ export function extractChartDataAndGroup(data: Data[]) {
     }
 
     return acc;
-  }, [] as RenderData[]);
+  }, [] as Metric[]);
 
-  return { group: [...group].sort(), renderData } as const;
+  return { groups: [...groups].sort(), metrics } as const;
 }

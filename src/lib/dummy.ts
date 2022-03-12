@@ -1,4 +1,6 @@
-export default [
+import { extractChartDataAndGroup } from './utils';
+
+const dummyData: Data[] = [
   {
     period: '2022-03-01',
     ratio: 7.57575,
@@ -295,3 +297,6 @@ export default [
     group: '60',
   },
 ];
+
+const { metrics, groups } = extractChartDataAndGroup(dummyData);
+export default { metrics, groups };

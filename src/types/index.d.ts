@@ -16,3 +16,9 @@ type FormSize = 'large' | 'middle' | 'small';
 
 type FormOptionKey = 'key' | 'label';
 type FormOptionList = { [key in FormOptionKey]: string }[];
+
+type Metric = { [key: string]: number | string };
+interface RenderData {
+  metrics: Metric[];
+  groups: Ages[];
+}

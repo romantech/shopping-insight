@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { ageList, deviceList, genderList } from '../lib/constants';
+import { ageList, deviceList, genderList } from 'lib/constants';
 import RadioButton from './forms/RadioButton';
 import GroupCheckbox from './forms/GroupCheckbox';
 

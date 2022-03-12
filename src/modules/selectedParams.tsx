@@ -29,13 +29,13 @@ export const setParams = (
 
 export default function reducer(
   state = initialState,
-  action: SelectedParamsAction,
+  { type, key, payload }: SelectedParamsAction,
 ): RequestParams {
-  switch (action.type) {
+  switch (type) {
     case SET_PARAMS:
       return {
         ...state,
-        [action.key]: action.payload,
+        [key]: payload,
       };
     default:
       return state;

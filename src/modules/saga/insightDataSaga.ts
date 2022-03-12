@@ -2,11 +2,12 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import api from 'api/index';
 import { AxiosResponse } from 'axios';
+import { extractChartDataAndGroup } from 'lib/utils';
 import {
   GET_DATA_REQUEST,
   getDataFailed,
   getDataSuccess,
-} from '../insightData';
+} from 'modules/insightData';
 
 interface GetInsightData {
   type: string; // 액션 타입
@@ -22,8 +23,9 @@ function* getInsightData(action: GetInsightData) {
       api.shoppingInsightKeywordAge,
       action.payload,
     );
+    const { groups, metrics } = extractChartDataAndGroup(data.results[0]?.data);
 
-    yield put(getDataSuccess(data)); // API 호출 성공 시 action dispatch
+    yield put(getDataSuccess({ data, groups, metrics })); // API 호출 성공 시 action dispatch
   } catch (err) {
     yield put(getDataFailed(err as Error)); // API 호출 실패 시 action dispatch
   }

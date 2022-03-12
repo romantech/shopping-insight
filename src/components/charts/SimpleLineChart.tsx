@@ -11,16 +11,19 @@ import {
 } from 'recharts';
 import { getLineColor } from '../../lib/utils';
 
-interface LineChartProps {
-  data: Record<string, string | number>[];
-  group: Ages[];
+interface SimpleLineChartProps {
+  metrics: Metric[];
+  groups: Ages[];
 }
 
-export default function Chart({ data, group }: LineChartProps): JSX.Element {
+export default function SimpleLineChart({
+  metrics,
+  groups,
+}: SimpleLineChartProps): JSX.Element {
   return (
     <ResponsiveContainer width="90%" height="80%">
       <LineChart
-        data={data}
+        data={metrics}
         margin={{
           top: 5,
           right: 40,
@@ -33,8 +36,9 @@ export default function Chart({ data, group }: LineChartProps): JSX.Element {
         <YAxis />
         <Tooltip />
         <Legend verticalAlign="top" height={36} iconType="rect" iconSize={20} />
-        {group.map(g => (
+        {groups.map(g => (
           <Line
+            onAnimationStart={console.log}
             name={`${g}대`} // legend 에 표시될 이름
             key={g}
             type="monotone" // 선 보간 유형

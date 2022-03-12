@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
+import { categoryList, timeUnitList } from 'lib/constants';
 import SingleDatePicker from './forms/SingleDatePicker';
 import SelectForm from './forms/SelectForm';
-import { categoryList, timeUnitList } from '../lib/constants';
 import TextInput from './forms/TextInput';
 import RadioButton from './forms/RadioButton';
 

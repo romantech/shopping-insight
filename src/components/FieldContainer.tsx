@@ -3,11 +3,11 @@ import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, notification } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import { inputRequireMsg, requiredParamKeys } from '../lib/constants';
-import { RootState } from '../modules';
-import { setParams } from '../modules/selectedParams';
-import { FlexCenterColumn, FlexCenterRow } from '../styles/commonStyles';
-import { getDataRequest } from '../modules/insightData';
+import { RootState } from 'modules';
+import { inputRequireMsg, requiredParamKeys } from 'lib/constants';
+import { setParams } from 'modules/selectedParams';
+import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
+import { getDataRequest } from 'modules/insightData';
 import RequiredFields from './RequiredFields';
 import OptionalFields from './OptionalFields';
 

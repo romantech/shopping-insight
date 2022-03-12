@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/default-param-last */
+// duck 패턴
 
 type InsightDataAction =
   | ReturnType<typeof getDataRequest>
@@ -8,14 +9,25 @@ type InsightDataAction =
 interface InsightDataState {
   loading: boolean;
   error: Error | null;
-  response: Result[];
+  rawData: InsightResponse | null;
+  renderData: RenderData;
+}
+
+interface GetDataSuccessPayload {
+  data: InsightResponse;
+  metrics: Metric[];
+  groups: Ages[];
 }
 
 // 기본값
 const initialState: InsightDataState = {
   loading: false,
   error: null,
-  response: [],
+  rawData: null,
+  renderData: {
+    groups: [],
+    metrics: [],
+  },
 };
 
 export const GET_DATA_REQUEST = 'insightData/GET_DATA_REQUEST';
@@ -24,16 +36,16 @@ export const GET_DATA_FAILED = 'insightData/GET_DATA_FAILED';
 
 export const getDataRequest = (payload: RequestParams) =>
   ({ type: GET_DATA_REQUEST, payload } as const);
-export const getDataSuccess = (payload: InsightResponse) =>
+export const getDataSuccess = (payload: GetDataSuccessPayload) =>
   ({ type: GET_DATA_SUCCESS, payload } as const);
 export const getDataFailed = (payload: Error) =>
   ({ type: GET_DATA_FAILED, payload } as const);
 
 export default function reducer(
   state = initialState,
-  action: InsightDataAction,
+  { type, payload }: InsightDataAction,
 ): InsightDataState {
-  switch (action.type) {
+  switch (type) {
     case GET_DATA_REQUEST:
       return {
         ...state,
@@ -44,13 +56,17 @@ export default function reducer(
         ...state,
         loading: false,
         error: null,
-        response: action.payload.results,
+        rawData: payload.data,
+        renderData: {
+          metrics: payload.metrics,
+          groups: payload.groups,
+        },
       };
     case GET_DATA_FAILED:
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: payload,
       };
     default:
       return state;
