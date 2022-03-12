@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input, Tooltip } from 'antd';
 
 interface TextInputProps {
@@ -18,6 +18,10 @@ export default function TextInput({
 }: TextInputProps): JSX.Element {
   const [isValid, setIsValid] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
+
+  useEffect(() => {
+    if (value.length >= validLen) setIsValid(true);
+  }, [value, validLen]);
 
   const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setIsValid(target.value.length >= validLen);

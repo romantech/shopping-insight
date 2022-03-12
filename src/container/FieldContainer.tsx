@@ -17,7 +17,13 @@ import RequiredFields from 'container/RequiredFields';
 import OptionalFields from 'container/OptionalFields';
 import { isProd } from 'lib/utils';
 
-export default function FieldContainer(): JSX.Element {
+interface FieldContainerProps {
+  isLoading: boolean;
+}
+
+export default function FieldContainer({
+  isLoading,
+}: FieldContainerProps): JSX.Element {
   const dispatch = useDispatch();
 
   const {
@@ -59,7 +65,7 @@ export default function FieldContainer(): JSX.Element {
             type="primary"
             icon={<SearchOutlined />}
             size="large"
-            disabled={isProd || !isValid}
+            disabled={isProd || !isValid || isLoading}
             onClick={buttonHandler}
             style={{ width: 118 }}
           >

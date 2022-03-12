@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { ageList, deviceList, genderList } from 'lib/constants';
 import RadioButton from 'components/forms/RadioButton';
 import GroupCheckbox from 'components/forms/GroupCheckbox';
@@ -6,7 +6,7 @@ import GroupCheckbox from 'components/forms/GroupCheckbox';
 interface OptionalFieldsProps {
   params: OptionalParams;
   handler: InsightParamsHandler;
-  children?: ReactElement;
+  children?: React.ReactNode;
 }
 
 export default function OptionalFields({

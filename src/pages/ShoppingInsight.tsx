@@ -8,7 +8,7 @@ import { FlexCenterRow } from 'styles/commonStyles';
 import SimpleLineChart from 'components/charts/SimpleLineChart';
 import { INTRODUCE_MSG, NO_DATA_MSG } from 'lib/constants';
 import dummy from 'lib/dummy';
-import { isProd } from '../lib/utils';
+import { isProd } from 'lib/utils';
 
 export default function ShoppingInsight(): JSX.Element {
   const { loading, renderData, error } = useSelector(
@@ -21,14 +21,18 @@ export default function ShoppingInsight(): JSX.Element {
   return (
     <StyledInsightWrapper>
       <StyledFormOptions>
-        <FieldContainer />
+        <FieldContainer isLoading={loading} />
         <StyledSpan>{INTRODUCE_MSG}</StyledSpan>
       </StyledFormOptions>
       <StyledLineChart>
         {loading ? (
           <Spin size="large" />
         ) : hasData && error === null ? (
-          <SimpleLineChart metrics={data.metrics} groups={data.groups} />
+          <SimpleLineChart
+            metrics={data.metrics}
+            groups={data.groups}
+            groupName="대"
+          />
         ) : (
           <Empty description={NO_DATA_MSG} />
         )}

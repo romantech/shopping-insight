@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { categoryList, timeUnitList } from 'lib/constants';
 import SingleDatePicker from 'components/forms/SingleDatePicker';
 import SelectForm from 'components/forms/SelectForm';
@@ -8,7 +8,7 @@ import RadioButton from 'components/forms/RadioButton';
 interface RequiredFieldsProps {
   params: RequiredParams;
   handler: InsightParamsHandler;
-  children?: ReactElement;
+  children?: React.ReactNode;
 }
 
 export default function RequiredFields({

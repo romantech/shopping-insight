@@ -6,11 +6,11 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
+import GlobalStyle from 'styles/globalStyle';
+import { isProd } from 'lib/utils';
 import rootReducer, { rootSaga } from './modules';
 import App from './App';
-import './styles/index.css';
-import GlobalStyle from './styles/globalStyle';
-import { isProd } from './lib/utils';
+import 'styles/index.css';
 
 const sagaMiddleware = createSagaMiddleware();
 const enhancer = isProd
