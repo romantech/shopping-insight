@@ -4,12 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, notification } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { RootState } from 'modules';
-import { inputRequireMsg, requiredParamKeys } from 'lib/constants';
+import {
+  inputRequireMsg,
+  optionalField,
+  requiredField,
+  requiredParamKeys,
+} from 'lib/constants';
 import { setParams } from 'modules/selectedParams';
 import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
 import { getDataRequest } from 'modules/insightData';
 import RequiredFields from './RequiredFields';
 import OptionalFields from './OptionalFields';
+import { isProd } from '../lib/utils';
 
 export default function FieldContainer(): JSX.Element {
   const { selectedParams: params } = useSelector((state: RootState) => state);
@@ -35,16 +41,17 @@ export default function FieldContainer(): JSX.Element {
   return (
     <StyledWrapper>
       <StyledFields>
-        <h1>필수 항목</h1>
+        <h1>{requiredField}</h1>
         <RequiredFields params={params} handler={formOnChangeHandler} />
       </StyledFields>
       <StyledFields>
-        <h1>선택 항목</h1>
+        <h1>{optionalField}</h1>
         <OptionalFields params={params} handler={formOnChangeHandler}>
           <Button
             type="primary"
             icon={<SearchOutlined />}
             size="large"
+            disabled={isProd}
             onClick={searchButtonHandler}
             style={{ width: 118 }}
           >

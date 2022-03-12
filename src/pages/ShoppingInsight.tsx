@@ -8,14 +8,14 @@ import { FlexCenterRow } from 'styles/commonStyles';
 import SimpleLineChart from 'components/charts/SimpleLineChart';
 import { introduceMsg, noDataMsg } from 'lib/constants';
 import dummy from 'lib/dummy';
+import { isProd } from '../lib/utils';
 
 export default function ShoppingInsight(): JSX.Element {
-  const { loading, rawData, renderData, error } = useSelector(
+  const { loading, renderData, error } = useSelector(
     (state: RootState) => state.insightData,
   );
 
-  const isProd = process.env.NODE_ENV === 'production';
-  const hasData = isProd ? true : !!rawData;
+  const hasData = isProd ? true : renderData.metrics.length > 0;
   const data = isProd ? dummy : renderData;
 
   return (

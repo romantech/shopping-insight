@@ -1,4 +1,6 @@
 // export type LineTypeKeys = keyof typeof LineChartLegendColor;
+export const isProd = process.env.NODE_ENV === 'production';
+
 export type LineColors = typeof LineChartLegendColor[Ages];
 export const LineChartLegendColor = {
   '10': '#C0392B ',

@@ -10,12 +10,12 @@ import rootReducer, { rootSaga } from './modules';
 import App from './App';
 import './styles/index.css';
 import GlobalStyle from './styles/globalStyle';
+import { isProd } from './lib/utils';
 
 const sagaMiddleware = createSagaMiddleware();
-const enhancer =
-  process.env.NODE_ENV === 'production'
-    ? compose(applyMiddleware(sagaMiddleware))
-    : composeWithDevTools(applyMiddleware(sagaMiddleware));
+const enhancer = isProd
+  ? compose(applyMiddleware(sagaMiddleware))
+  : composeWithDevTools(applyMiddleware(sagaMiddleware));
 
 const store = createStore(rootReducer, enhancer);
 const persistor = persistStore(store);
