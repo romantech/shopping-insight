@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { ageList, deviceList, genderList } from 'lib/constants';
-import RadioButton from './forms/RadioButton';
-import GroupCheckbox from './forms/GroupCheckbox';
+import RadioButton from 'components/forms/RadioButton';
+import GroupCheckbox from 'components/forms/GroupCheckbox';
 
 interface OptionalFieldsProps {
   params: OptionalParams;

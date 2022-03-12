@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
 import { Empty, Spin } from 'antd';
-import FieldContainer from 'components/FieldContainer';
+import FieldContainer from 'container/FieldContainer';
 import { RootState } from 'modules';
 import { FlexCenterRow } from 'styles/commonStyles';
 import SimpleLineChart from 'components/charts/SimpleLineChart';
-import { introduceMsg, noDataMsg } from 'lib/constants';
+import { INTRODUCE_MSG, NO_DATA_MSG } from 'lib/constants';
 import dummy from 'lib/dummy';
 import { isProd } from '../lib/utils';
 
@@ -22,7 +22,7 @@ export default function ShoppingInsight(): JSX.Element {
     <StyledInsightWrapper>
       <StyledFormOptions>
         <FieldContainer />
-        <StyledSpan>{introduceMsg}</StyledSpan>
+        <StyledSpan>{INTRODUCE_MSG}</StyledSpan>
       </StyledFormOptions>
       <StyledLineChart>
         {loading ? (
@@ -30,7 +30,7 @@ export default function ShoppingInsight(): JSX.Element {
         ) : hasData && error === null ? (
           <SimpleLineChart metrics={data.metrics} groups={data.groups} />
         ) : (
-          <Empty description={noDataMsg} />
+          <Empty description={NO_DATA_MSG} />
         )}
       </StyledLineChart>
     </StyledInsightWrapper>

@@ -24,13 +24,11 @@ const persistor = persistStore(store);
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <GlobalStyle />
-      </PersistGate>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <GlobalStyle />
+    </PersistGate>
+    <App />
+  </Provider>,
   document.getElementById('root'),
 );

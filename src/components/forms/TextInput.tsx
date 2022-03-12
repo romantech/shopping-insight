@@ -6,6 +6,7 @@ interface TextInputProps {
   callback: InsightParamsHandler;
   paramKey: RequestParamKeys;
   validLen?: number;
+  placeholder?: string;
 }
 
 export default function TextInput({
@@ -13,6 +14,7 @@ export default function TextInput({
   callback,
   paramKey,
   validLen = 1,
+  placeholder,
 }: TextInputProps): JSX.Element {
   const [isValid, setIsValid] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
@@ -25,7 +27,7 @@ export default function TextInput({
   return (
     <Tooltip title="최소 1글자 이상 입력하세요" visible={!isValid && isFocus}>
       <Input
-        placeholder="키워드를 입력하세요"
+        placeholder={placeholder || paramKey}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         size="large"

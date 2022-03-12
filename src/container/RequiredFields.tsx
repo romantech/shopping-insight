@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 import { categoryList, timeUnitList } from 'lib/constants';
-import SingleDatePicker from './forms/SingleDatePicker';
-import SelectForm from './forms/SelectForm';
-import TextInput from './forms/TextInput';
-import RadioButton from './forms/RadioButton';
+import SingleDatePicker from 'components/forms/SingleDatePicker';
+import SelectForm from 'components/forms/SelectForm';
+import TextInput from 'components/forms/TextInput';
+import RadioButton from 'components/forms/RadioButton';
 
 interface RequiredFieldsProps {
   params: RequiredParams;
@@ -23,12 +23,14 @@ export default function RequiredFields({
         endDate={params.endDate}
         callback={handler}
         paramKey="startDate"
+        placeholder="시작 날짜"
       />
       <SingleDatePicker
         value={params.endDate}
         startDate={params.startDate}
         callback={handler}
         paramKey="endDate"
+        placeholder="종료 날짜"
       />
       <SelectForm
         value={params.category}
@@ -36,7 +38,12 @@ export default function RequiredFields({
         callback={handler}
         paramKey="category"
       />
-      <TextInput value={params.keyword} callback={handler} paramKey="keyword" />
+      <TextInput
+        value={params.keyword}
+        callback={handler}
+        paramKey="keyword"
+        placeholder="키워드를 입력하세요"
+      />
       <RadioButton
         value={params.timeUnit}
         options={timeUnitList}

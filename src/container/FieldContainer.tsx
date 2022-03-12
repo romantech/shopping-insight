@@ -5,16 +5,17 @@ import { Button, notification } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { RootState } from 'modules';
 import {
-  inputRequireMsg,
-  optionalFieldKoName,
-  requiredFieldKoName,
+  INPUT_REQUIRED_MSG,
+  OPTIONAL_FIELD_KO_TXT,
+  REQUIRED_FIELD_KO_TXT,
+  SEARCH_BTN_TXT,
 } from 'lib/constants';
 import { setInsightParams } from 'modules/insightParams';
 import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
 import { getInsightDataRequest } from 'modules/insightData';
-import RequiredFields from './RequiredFields';
-import OptionalFields from './OptionalFields';
-import { isProd } from '../lib/utils';
+import RequiredFields from 'container/RequiredFields';
+import OptionalFields from 'container/OptionalFields';
+import { isProd } from 'lib/utils';
 
 export default function FieldContainer(): JSX.Element {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ export default function FieldContainer(): JSX.Element {
     } else {
       notification.error({
         duration: 2,
-        message: inputRequireMsg,
+        message: INPUT_REQUIRED_MSG,
       });
     }
   };
@@ -48,11 +49,11 @@ export default function FieldContainer(): JSX.Element {
   return (
     <StyledWrapper>
       <StyledFields>
-        <h1>{requiredFieldKoName}</h1>
+        <h1>{REQUIRED_FIELD_KO_TXT}</h1>
         <RequiredFields params={requiredParams} handler={onChangeHandler} />
       </StyledFields>
       <StyledFields>
-        <h1>{optionalFieldKoName}</h1>
+        <h1>{OPTIONAL_FIELD_KO_TXT}</h1>
         <OptionalFields params={optionalParams} handler={onChangeHandler}>
           <Button
             type="primary"
@@ -62,7 +63,7 @@ export default function FieldContainer(): JSX.Element {
             onClick={buttonHandler}
             style={{ width: 118 }}
           >
-            Search
+            {SEARCH_BTN_TXT}
           </Button>
         </OptionalFields>
       </StyledFields>

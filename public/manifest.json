@@ -1,6 +1,6 @@
 {
-  "short_name": "Shopping Insight",
-  "name": "Naver Shopping Insight Graph",
+  "short_name": "네이버 쇼핑 인사이트 검색",
+  "name": "네이버 쇼핑 인사이트 키워드/연령별 트렌드 조회",
   "icons": [
     {
       "src": "favicon.ico",

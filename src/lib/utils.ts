@@ -11,13 +11,13 @@ export const LineChartLegendColor = {
   '60': '#2C3E50 ',
 };
 
+export const getLineColor = (group: Ages): LineColors => {
+  return LineChartLegendColor[group];
+};
+
 export const checkValidKoWords = (str: string, validLen: number): boolean => {
   const re = /([^가-힣\x20])/i; // 자음 모음만 입력했다면 true
   return !re.test(str) && str.length >= validLen;
-};
-
-export const getLineColor = (group: Ages): LineColors => {
-  return LineChartLegendColor[group];
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
