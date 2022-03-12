@@ -2,9 +2,9 @@
 // duck 패턴
 
 type InsightDataAction =
-  | ReturnType<typeof getDataRequest>
-  | ReturnType<typeof getDataSuccess>
-  | ReturnType<typeof getDataFailed>;
+  | ReturnType<typeof getInsightDataRequest>
+  | ReturnType<typeof getInsightDataSuccess>
+  | ReturnType<typeof getInsightDataFailed>;
 
 interface InsightDataState {
   loading: boolean;
@@ -13,13 +13,12 @@ interface InsightDataState {
   renderData: RenderData;
 }
 
-interface GetDataSuccessPayload {
+interface ResponsePayload {
   data: InsightResponse;
   metrics: Metric[];
   groups: Ages[];
 }
 
-// 기본값
 const initialState: InsightDataState = {
   loading: false,
   error: null,
@@ -30,28 +29,28 @@ const initialState: InsightDataState = {
   },
 };
 
-export const GET_DATA_REQUEST = 'insightData/GET_DATA_REQUEST';
-export const GET_DATA_SUCCESS = 'insightData/GET_DATA_SUCCESS';
-export const GET_DATA_FAILED = 'insightData/GET_DATA_FAILED';
+export const GET_INSIGHT_DATA_REQUEST = 'insightData/GET_INSIGHT_DATA_REQUEST';
+export const GET_INSIGHT_DATA_SUCCESS = 'insightData/GET_INSIGHT_DATA_SUCCESS';
+export const GET_INSIGHT_DATA_FAILED = 'insightData/GET_INSIGHT_DATA_FAILED';
 
-export const getDataRequest = (payload: RequestParams) =>
-  ({ type: GET_DATA_REQUEST, payload } as const);
-export const getDataSuccess = (payload: GetDataSuccessPayload) =>
-  ({ type: GET_DATA_SUCCESS, payload } as const);
-export const getDataFailed = (payload: Error) =>
-  ({ type: GET_DATA_FAILED, payload } as const);
+export const getInsightDataRequest = (payload: RequestParams) =>
+  ({ type: GET_INSIGHT_DATA_REQUEST, payload } as const);
+export const getInsightDataSuccess = (payload: ResponsePayload) =>
+  ({ type: GET_INSIGHT_DATA_SUCCESS, payload } as const);
+export const getInsightDataFailed = (payload: Error) =>
+  ({ type: GET_INSIGHT_DATA_FAILED, payload } as const);
 
 export default function reducer(
   state = initialState,
   { type, payload }: InsightDataAction,
 ): InsightDataState {
   switch (type) {
-    case GET_DATA_REQUEST:
+    case GET_INSIGHT_DATA_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case GET_DATA_SUCCESS:
+    case GET_INSIGHT_DATA_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -62,7 +61,7 @@ export default function reducer(
           groups: payload.groups,
         },
       };
-    case GET_DATA_FAILED:
+    case GET_INSIGHT_DATA_FAILED:
       return {
         ...state,
         loading: false,

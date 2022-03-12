@@ -5,7 +5,7 @@ import GroupCheckbox from './forms/GroupCheckbox';
 
 interface OptionalFieldsProps {
   params: OptionalParams;
-  handler: HandlerCallback;
+  handler: InsightParamsHandler;
   children?: ReactElement;
 }
 

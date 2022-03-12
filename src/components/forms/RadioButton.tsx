@@ -4,7 +4,7 @@ import { Radio, RadioChangeEvent } from 'antd';
 interface RadioButtonProps {
   value: TimeUnit | Gender | Device;
   options: FormOptionList;
-  callback: HandlerCallback;
+  callback: InsightParamsHandler;
   paramKey: RequestParamKeys;
   size?: FormSize;
 }

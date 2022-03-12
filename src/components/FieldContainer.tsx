@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, notification } from 'antd';
@@ -6,30 +6,37 @@ import { SearchOutlined } from '@ant-design/icons';
 import { RootState } from 'modules';
 import {
   inputRequireMsg,
-  optionalField,
-  requiredField,
-  requiredParamKeys,
+  optionalFieldKoName,
+  requiredFieldKoName,
 } from 'lib/constants';
-import { setParams } from 'modules/selectedParams';
+import { setInsightParams } from 'modules/insightParams';
 import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
-import { getDataRequest } from 'modules/insightData';
+import { getInsightDataRequest } from 'modules/insightData';
 import RequiredFields from './RequiredFields';
 import OptionalFields from './OptionalFields';
 import { isProd } from '../lib/utils';
 
 export default function FieldContainer(): JSX.Element {
-  const { selectedParams: params } = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
 
-  const formOnChangeHandler: HandlerCallback = (key, value) => {
-    dispatch(setParams(key, value));
+  const {
+    insightParams: { requiredParams, optionalParams },
+  } = useSelector((state: RootState) => state);
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    setIsValid(Object.values(requiredParams).every(v => v.length > 0));
+  }, [requiredParams]);
+
+  const onChangeHandler: InsightParamsHandler = (paramKey, value) => {
+    const paramType =
+      paramKey in requiredParams ? 'requiredParams' : 'optionalParams';
+    dispatch(setInsightParams(paramType, paramKey, value));
   };
 
-  const searchButtonHandler = () => {
-    const isValid = requiredParamKeys.every(field => params[field].length > 0);
-
+  const buttonHandler = () => {
     if (isValid) {
-      dispatch(getDataRequest(params));
+      dispatch(getInsightDataRequest({ ...requiredParams, ...optionalParams }));
     } else {
       notification.error({
         duration: 2,
@@ -41,18 +48,18 @@ export default function FieldContainer(): JSX.Element {
   return (
     <StyledWrapper>
       <StyledFields>
-        <h1>{requiredField}</h1>
-        <RequiredFields params={params} handler={formOnChangeHandler} />
+        <h1>{requiredFieldKoName}</h1>
+        <RequiredFields params={requiredParams} handler={onChangeHandler} />
       </StyledFields>
       <StyledFields>
-        <h1>{optionalField}</h1>
-        <OptionalFields params={params} handler={formOnChangeHandler}>
+        <h1>{optionalFieldKoName}</h1>
+        <OptionalFields params={optionalParams} handler={onChangeHandler}>
           <Button
             type="primary"
             icon={<SearchOutlined />}
             size="large"
-            disabled={isProd}
-            onClick={searchButtonHandler}
+            disabled={isProd || !isValid}
+            onClick={buttonHandler}
             style={{ width: 118 }}
           >
             Search

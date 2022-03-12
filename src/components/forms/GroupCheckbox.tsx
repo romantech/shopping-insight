@@ -5,7 +5,7 @@ import { CheckboxValueType } from 'antd/lib/checkbox/Group';
 interface GroupCheckboxProps {
   value: Ages[];
   options: FormOptionList;
-  callback: HandlerCallback;
+  callback: InsightParamsHandler;
   paramKey: RequestParamKeys;
 }
 

@@ -4,9 +4,9 @@ import api from 'api/index';
 import { AxiosResponse } from 'axios';
 import { extractChartDataAndGroup } from 'lib/utils';
 import {
-  GET_DATA_REQUEST,
-  getDataFailed,
-  getDataSuccess,
+  GET_INSIGHT_DATA_REQUEST,
+  getInsightDataFailed,
+  getInsightDataSuccess,
 } from 'modules/insightData';
 
 interface GetInsightData {
@@ -25,13 +25,13 @@ function* getInsightData(action: GetInsightData) {
     );
     const { groups, metrics } = extractChartDataAndGroup(data.results[0]?.data);
 
-    yield put(getDataSuccess({ data, groups, metrics })); // API 호출 성공 시 action dispatch
+    yield put(getInsightDataSuccess({ data, groups, metrics })); // API 호출 성공 시 action dispatch
   } catch (err) {
-    yield put(getDataFailed(err as Error)); // API 호출 실패 시 action dispatch
+    yield put(getInsightDataFailed(err as Error)); // API 호출 실패 시 action dispatch
   }
 }
 export default function* insightDataSaga(): Generator {
-  yield takeLatest(GET_DATA_REQUEST, getInsightData);
+  yield takeLatest(GET_INSIGHT_DATA_REQUEST, getInsightData);
   // yield takeLatest(...) : 가장 마지막(최신) 실행된 액션에 대해서만 핸들러를 실행
   // 이전 액션을 처리하는 동안 동일 타입의 새로운 액션이 dispatch 되면 기존 작업 무시하고 새로운 작업 시작
   // 첫번째 인자(액션 객체)가 들어오면, 두번째 인자(함수) 실행

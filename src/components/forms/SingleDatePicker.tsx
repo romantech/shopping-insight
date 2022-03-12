@@ -6,7 +6,7 @@ import { overDateMsg } from '../../lib/constants';
 
 interface SingleDatePickerProps {
   value: string;
-  callback: HandlerCallback;
+  callback: InsightParamsHandler;
   paramKey: RequestParamKeys;
   endDate?: string;
   startDate?: string;

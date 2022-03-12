@@ -5,7 +5,7 @@ const { Option } = Select;
 
 interface SelectFormProps {
   value: string;
-  callback: HandlerCallback;
+  callback: InsightParamsHandler;
   paramKey: RequestParamKeys;
   options: FormOptionList;
   size?: FormSize;

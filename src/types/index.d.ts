@@ -6,7 +6,7 @@ declare namespace NodeJS {
 }
 
 type ValueType = string | number | boolean;
-type HandlerCallback = (
+type InsightParamsHandler = (
   type: RequestParamKeys,
   value: ValueType | Array<ValueType>,
 ) => void;

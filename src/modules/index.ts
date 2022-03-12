@@ -2,18 +2,18 @@ import { combineReducers } from 'redux';
 import { all } from 'redux-saga/effects';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import selectedParams from './selectedParams';
+import insightParams from './insightParams';
 import insightData from './insightData';
 import insightDataSaga from './saga/insightDataSaga';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['selectedParams', 'insightData'],
+  whitelist: ['insightParams', 'insightData'],
   // blacklist: [], // 블랙리스트에 있는 항목을 제외하고 모두 포함
 };
 
-const rootReducer = combineReducers({ selectedParams, insightData });
+const rootReducer = combineReducers({ insightParams, insightData });
 
 export default persistReducer(persistConfig, rootReducer);
 

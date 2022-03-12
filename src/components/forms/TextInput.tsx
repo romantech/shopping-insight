@@ -3,7 +3,7 @@ import { Input } from 'antd';
 
 interface TextInputProps {
   value: string;
-  callback: HandlerCallback;
+  callback: InsightParamsHandler;
   paramKey: RequestParamKeys;
 }
 

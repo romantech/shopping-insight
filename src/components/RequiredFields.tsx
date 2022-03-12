@@ -7,7 +7,7 @@ import RadioButton from './forms/RadioButton';
 
 interface RequiredFieldsProps {
   params: RequiredParams;
-  handler: HandlerCallback;
+  handler: InsightParamsHandler;
   children?: ReactElement;
 }
 

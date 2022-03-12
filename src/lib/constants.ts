@@ -1,19 +1,11 @@
-export const requiredField = '필수 항목';
-export const optionalField = '옵션 항목';
+export const requiredFieldKoName = '필수 항목';
+export const optionalFieldKoName = '옵션 항목';
 export const overDateMsg =
   '2017년 8월부터 오늘까지만 조회할 수 있어요. 다시 선택해주세요';
 export const inputRequireMsg = '필수 항목을 모두 입력 해주세요';
 export const introduceMsg = '쇼핑인사이트 키워드 연령별 트렌드 조회';
 export const noDataMsg =
   '데이터가 없어요! 필수 항목을 모두 입력한 후 검색해보세요';
-
-export const requiredParamKeys: Array<keyof RequiredParams> = [
-  'startDate',
-  'endDate',
-  'category',
-  'keyword',
-  'timeUnit',
-];
 
 export const categoryList = [
   {
