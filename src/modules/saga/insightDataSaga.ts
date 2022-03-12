@@ -25,7 +25,15 @@ function* getInsightData(action: GetInsightData) {
     );
     const { groups, metrics } = extractChartDataAndGroup(data.results[0]?.data);
 
-    yield put(getInsightDataSuccess({ data, groups, metrics })); // API 호출 성공 시 action dispatch
+    yield put(
+      getInsightDataSuccess({
+        data,
+        computedData: {
+          groups,
+          metrics,
+        },
+      }),
+    ); // API 호출 성공 시 action dispatch
   } catch (err) {
     yield put(getInsightDataFailed(err as Error)); // API 호출 실패 시 action dispatch
   }

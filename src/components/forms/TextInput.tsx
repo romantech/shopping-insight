@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
-import { Input } from 'antd';
+import { Input, Tooltip } from 'antd';
 
 interface TextInputProps {
   value: string;
   callback: InsightParamsHandler;
   paramKey: RequestParamKeys;
+  validLen?: number;
 }
 
 export default function TextInput({
   value,
   callback,
   paramKey,
+  validLen = 1,
 }: TextInputProps): JSX.Element {
-  const [status, setStatus] = useState<FormStatus>('');
+  const [isValid, setIsValid] = useState(false);
+  const [isFocus, setIsFocus] = useState(false);
 
   const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    const isValid = target.value.length >= 1;
-
-    setStatus(isValid ? '' : 'error');
+    setIsValid(target.value.length >= validLen);
     callback(paramKey, target.value);
   };
 
   return (
-    <Input
-      placeholder="키워드를 입력하세요"
-      size="large"
-      value={value}
-      maxLength={20}
-      status={status}
-      style={{ maxWidth: 200 }}
-      onChange={onChangeHandler}
-    />
+    <Tooltip title="최소 1글자 이상 입력하세요" visible={!isValid && isFocus}>
+      <Input
+        placeholder="키워드를 입력하세요"
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
+        size="large"
+        value={value}
+        maxLength={20}
+        status={!isValid && isFocus ? 'error' : ''}
+        style={{ maxWidth: 200 }}
+        onChange={onChangeHandler}
+      />
+    </Tooltip>
   );
 }

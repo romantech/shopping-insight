@@ -15,8 +15,10 @@ interface InsightDataState {
 
 interface ResponsePayload {
   data: InsightResponse;
-  metrics: Metric[];
-  groups: Ages[];
+  computedData: {
+    metrics: Metric[];
+    groups: Ages[];
+  };
 }
 
 const initialState: InsightDataState = {
@@ -56,10 +58,7 @@ export default function reducer(
         loading: false,
         error: null,
         rawData: payload.data,
-        renderData: {
-          metrics: payload.metrics,
-          groups: payload.groups,
-        },
+        renderData: payload.computedData,
       };
     case GET_INSIGHT_DATA_FAILED:
       return {
