@@ -6,7 +6,7 @@ const isProd = process.env.NODE_ENV === 'production';
 module.exports = function (app) {
   app.use(
     createProxyMiddleware('/api', {
-      target: process.env.BASE_URL,
+      target: process.env.REACT_APP_BASE_URL,
       changeOrigin: !isProd,
     }),
   );
