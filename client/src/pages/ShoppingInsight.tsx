@@ -7,16 +7,13 @@ import { RootState } from 'modules';
 import { FlexCenterRow } from 'styles/commonStyles';
 import SimpleLineChart from 'components/charts/SimpleLineChart';
 import { INTRODUCE_MSG, NO_DATA_MSG } from 'lib/constants';
-import dummy from 'lib/dummy';
-import { isProd } from 'lib/utils';
 
 export default function ShoppingInsight(): JSX.Element {
   const { loading, renderData, error } = useSelector(
     (state: RootState) => state.insightData,
   );
 
-  const hasData = isProd ? true : renderData.metrics.length > 0;
-  const data = isProd ? dummy : renderData;
+  const hasData = renderData.metrics.length > 0;
 
   return (
     <StyledInsightWrapper>
@@ -29,8 +26,8 @@ export default function ShoppingInsight(): JSX.Element {
           <Spin size="large" />
         ) : hasData && error === null ? (
           <SimpleLineChart
-            metrics={data.metrics}
-            groups={data.groups}
+            metrics={renderData.metrics}
+            groups={renderData.groups}
             groupName="대"
           />
         ) : (

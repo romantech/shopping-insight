@@ -14,7 +14,6 @@ import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
 import { getInsightDataRequest } from 'modules/insightData';
 import RequiredFields from 'container/RequiredFields';
 import OptionalFields from 'container/OptionalFields';
-import { isProd } from 'lib/utils';
 
 interface FieldContainerProps {
   isLoading: boolean;
@@ -60,7 +59,7 @@ export default function FieldContainer({
             type="primary"
             icon={<SearchOutlined />}
             size="large"
-            disabled={isProd || !isValid || isLoading}
+            disabled={!isValid || isLoading}
             onClick={buttonHandler}
             style={{ width: 118 }}
           >
