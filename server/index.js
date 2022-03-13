@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
-const port = isProd ? 443 : 4000;
+const port = process.env.PORT;
 
 const corsOptions = {
   origin: ['https://shopping-insight.vercel.app'],
