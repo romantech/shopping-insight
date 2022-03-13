@@ -16,18 +16,10 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "downlevelIteration": true,
-    "typeRoots": [
-      "../node_modules/@types",
-      "./src/types"
-    ],
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "baseUrl": "src"
     // src 폴더를 기준 절대경로 설정 ex) components/hello.tsx
   },
-  "include": [
-    "babel-plugin-macros.config.js",
-    ".eslintrc.js",
-    "./src/**/*"
-  ],
-  "exclude": [
-    "../node_modules", "dist"]
+  "include": ["babel-plugin-macros.config.js", ".eslintrc.js", "./src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

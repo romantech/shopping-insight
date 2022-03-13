@@ -20,19 +20,19 @@ const shoppingRouter = require('./routes/shopping');
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(express.urlencoded({extended: false})); // 중첩 객체 표현
+app.use(express.urlencoded({ extended: false })); // 중첩 객체 표현
 
 app.get('/', (req, res) => {
-  res.send('<h2>Server is on</h2>')
-})
+  res.send('<h2>Server is on</h2>');
+});
 app.use('/shopping', shoppingRouter);
 
 const options = isProd
   ? {
-    ca: fs.readFileSync(`${process.env.CERT_PATH}/fullchain.pem`),
-    key: fs.readFileSync(`${process.env.CERT_PATH}/privkey.pem`,),
-    cert: fs.readFileSync(`${process.env.CERT_PATH}/cert.pem`,),
-  }
+      ca: fs.readFileSync(`${process.env.CERT_PATH}/fullchain.pem`),
+      key: fs.readFileSync(`${process.env.CERT_PATH}/privkey.pem`),
+      cert: fs.readFileSync(`${process.env.CERT_PATH}/cert.pem`),
+    }
   : null;
 
 const server = options
