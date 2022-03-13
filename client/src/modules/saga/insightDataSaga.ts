@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 
-import api from 'api/index';
+import api from 'api';
 import { AxiosResponse } from 'axios';
 import { extractChartDataAndGroup } from 'lib/utils';
 import {
