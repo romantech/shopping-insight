@@ -16,15 +16,16 @@ const corsOptions = {
 
 const http = require('http');
 const https = require('https');
-const indexRouter = require('./routes/index');
 const shoppingRouter = require('./routes/shopping');
 
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended: false})); // 중첩 객체 표현
 
-app.use('/api', indexRouter);
-app.use('/api/shopping', shoppingRouter);
+app.get('/', (req, res) => {
+  res.send('<h2>Server is on</h2>')
+})
+app.use('/shopping', shoppingRouter);
 
 const options = isProd
   ? {

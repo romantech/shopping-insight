@@ -1,5 +1,5 @@
 {
-  "name": "shopping-insight-graph",
+  "name": "shopping-insight-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
