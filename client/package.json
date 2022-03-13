@@ -1,5 +1,5 @@
 {
-  "name": "shopping-insight-graph",
+  "name": "shopping-insight-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
