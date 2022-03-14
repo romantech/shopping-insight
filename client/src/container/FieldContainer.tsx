@@ -5,8 +5,8 @@ import { Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { RootState } from 'modules';
 import {
-  OPTIONAL_FIELD_KO_TXT,
-  REQUIRED_FIELD_KO_TXT,
+  OPTIONAL_FIELD_TXT,
+  REQUIRED_FIELD_TXT,
   SEARCH_BTN_TXT,
 } from 'lib/constants';
 import { setInsightParams } from 'modules/insightParams';
@@ -49,11 +49,11 @@ export default function FieldContainer({
   return (
     <StyledWrapper>
       <StyledFields>
-        <h1>{REQUIRED_FIELD_KO_TXT}</h1>
+        <h1>{REQUIRED_FIELD_TXT}</h1>
         <RequiredFields params={requiredParams} handler={onChangeHandler} />
       </StyledFields>
       <StyledFields>
-        <h1>{OPTIONAL_FIELD_KO_TXT}</h1>
+        <h1>{OPTIONAL_FIELD_TXT}</h1>
         <OptionalFields params={optionalParams} handler={onChangeHandler}>
           <Button
             type="primary"

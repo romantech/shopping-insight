@@ -1,8 +1,8 @@
-# 네이버 쇼핑 인사이트 키워드/연령별 트렌드 조회
+# 네이버 쇼핑 인사이트 키워드/연령별 트렌드 시각화 미니 프로젝트
 
-<img width="1358" alt="20220311_172923@2x" src="https://user-images.githubusercontent.com/8604840/157831711-72c933cc-5ff7-4796-ae27-29faacf0690f.png">
+<img width="1330" alt="20220314_114553@2x" src="https://user-images.githubusercontent.com/8604840/158096151-d0f3b440-6edc-4503-9be2-97073b2b9ab0.png">
 
-> _네이버 OPEN API에서 제공하는 키워드/연령별 트렌드 데이터를 시각화한 미니 어플리케이션입니다_
+> _네이버 Open API에서 제공하는 키워드/연령별 트렌드 데이터를 시각화한 미니 어플리케이션입니다_
 
 - Live Demo : https://shopping-insight.vercel.app (모바일 미지원)
 - 작업 기간 : 4일 (리팩토링 / 배포 작업 기간 제외)
@@ -16,12 +16,12 @@
 
 ## 구현 내역
 
-- 네이버 OPEN API [키워드/연령별 트렌드 조회 데이터](https://bit.ly/3i5lES4) 사용
+- 네이버 Open API [키워드/연령별 트렌드 조회 데이터](https://bit.ly/3i5lES4) 사용
 - 차트 라이브러리([Rechart](https://recharts.org/zh-CN))를 이용해 연령별 라인 차트 시각화
-- 사용자가 선택한 데이터 조회 파라미터 리덕스 상태로 저장(렌더링 완료한 차트 데이터 포함)
+- 사용자가 선택한 옵션 파라미터는 리덕스 상태로 저장(렌더링 완료한 차트 데이터 포함)
   - (필수 / 기본값 지정) 시작/종료 날짜 : Single Date Picker
   - (필수 / 기본값 지정) 구간 단위 : 단일 선택 Form
-  - (필수 / 기본값 지정) 카테고리(쇼핑 분야 코드) : 검색/선택 가능한 리스트 Form
+  - (필수 / 기본값 지정) 카테고리 : 검색/선택 가능한 리스트 Form
   - (필수) 검색 키워드 : Text Input Form
   - 기기 : 단일 선택 Form
   - 성별 : 단일 선택 Form
@@ -47,5 +47,5 @@
 
 1. **레포지토리 클론 :** `git clone https://github.com/romantech/shopping-insight.git`
 2. **종속성 설치 :** `npm install`
-3. **환경 변수 세팅 :** `.env` 파일명 변경 후 `BASE_URL` 변수에 `https://api-shopping-insight.romantech.net:2443` 입력
-4. **프로젝트 시작 :** 터미널에서 `npm start`
+3. **환경 변수 세팅 :** `REACT_APP_BASE_URL` 변수에 `https://api-shopping-insight.romantech.net:2443` 입력
+4. **프로젝트 시작 :** `npm start`

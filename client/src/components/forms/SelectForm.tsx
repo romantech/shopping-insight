@@ -9,6 +9,7 @@ interface SelectFormProps {
   paramKey: RequestParamKeys;
   options: FormOptionList;
   size?: FormSize;
+  placeholder?: string;
 }
 
 export default function SelectForm({
@@ -17,6 +18,7 @@ export default function SelectForm({
   paramKey,
   options,
   size = 'large',
+  placeholder,
 }: SelectFormProps): JSX.Element {
   return (
     <Select
@@ -25,7 +27,7 @@ export default function SelectForm({
       value={value}
       style={{ width: 200 }}
       size={size}
-      placeholder="Category"
+      placeholder={placeholder || paramKey}
       optionFilterProp="children"
     >
       {options.map(({ label, key }) => (

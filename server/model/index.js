@@ -18,7 +18,7 @@ const shoppingInstance = axios.create({
     'X-Naver-Client-Id': process.env.NAVER_CLIENT_ID,
     'X-Naver-Client-Secret': process.env.NAVER_CLIENT_SECRET,
   },
-  timeout: 1000,
+  timeout: 3000, // 3초간 응답 없으면 요청 종료 후 catch 문으로 에러 전달
 });
 
 module.exports = {

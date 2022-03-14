@@ -15,12 +15,14 @@ interface SimpleLineChartProps {
   metrics: Metric[];
   groups: Ages[];
   groupName: string;
+  xAxisDataKey: Partial<keyof Data>;
 }
 
 export default function SimpleLineChart({
   metrics,
   groups,
   groupName,
+  xAxisDataKey,
 }: SimpleLineChartProps): JSX.Element {
   return (
     <ResponsiveContainer width="90%" height="80%">
@@ -29,12 +31,12 @@ export default function SimpleLineChart({
         margin={{
           top: 5,
           right: 40,
-          left: 20,
+          left: 0,
           bottom: 5,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="period" />
+        <XAxis dataKey={xAxisDataKey} />
         <YAxis />
         <Tooltip />
         <Legend verticalAlign="top" height={36} iconType="rect" iconSize={20} />

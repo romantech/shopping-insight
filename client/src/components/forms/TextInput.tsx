@@ -28,8 +28,10 @@ export default function TextInput({
     callback(paramKey, target.value);
   };
 
+  const tooltipMsg = `최소 ${validLen}글자 이상 입력하세요`;
+
   return (
-    <Tooltip title="최소 1글자 이상 입력하세요" visible={!isValid && isFocus}>
+    <Tooltip title={tooltipMsg} visible={!isValid && isFocus}>
       <Input
         placeholder={placeholder || paramKey}
         onFocus={() => setIsFocus(true)}

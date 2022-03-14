@@ -3,6 +3,7 @@ import {
   categoryList,
   END_DATE_TXT,
   INPUT_KEYWORD_PLACEHOLDER,
+  SELECT_FORM_PLACEHOLDER,
   START_DATE_TXT,
   timeUnitList,
 } from 'lib/constants';
@@ -47,6 +48,7 @@ export default function RequiredFields({
         options={categoryList}
         callback={handler}
         paramKey="category"
+        placeholder={SELECT_FORM_PLACEHOLDER}
       />
       <TextInput
         value={params.keyword}

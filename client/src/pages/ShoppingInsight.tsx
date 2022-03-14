@@ -29,6 +29,7 @@ export default function ShoppingInsight(): JSX.Element {
             metrics={renderData.metrics}
             groups={renderData.groups}
             groupName="대"
+            xAxisDataKey="period"
           />
         ) : (
           <Empty description={NO_DATA_MSG} />
