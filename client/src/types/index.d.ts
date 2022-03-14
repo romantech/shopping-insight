@@ -19,6 +19,7 @@ type FormOptionList = { [key in FormOptionKey]: string }[];
 
 type Metric = { [key: string]: number | string };
 interface RenderData {
+  category: Category;
   metrics: Metric[];
   groups: Ages[];
 }

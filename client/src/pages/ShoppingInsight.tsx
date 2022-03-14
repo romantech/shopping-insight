@@ -7,35 +7,50 @@ import { RootState } from 'modules';
 import { FlexCenterRow } from 'styles/commonStyles';
 import SimpleLineChart from 'components/charts/SimpleLineChart';
 import { INTRODUCE_MSG, NO_DATA_MSG } from 'lib/constants';
+import { getTextSummaryData, SummaryData } from '../lib/utils';
+import TextSummary from '../components/TextSummary';
 
 export default function ShoppingInsight(): JSX.Element {
-  const { loading, renderData, error } = useSelector(
+  const { loading, renderData, rawData, error } = useSelector(
     (state: RootState) => state.insightData,
   );
 
   const hasData = renderData.metrics.length > 0;
+  const summaryData = rawData
+    ? getTextSummaryData(rawData, renderData)
+    : ({} as SummaryData);
 
   return (
-    <StyledInsightWrapper>
+    <StyledContainer>
       <StyledFormOptions>
         <FieldContainer isLoading={loading} />
         <StyledSpan>{INTRODUCE_MSG}</StyledSpan>
       </StyledFormOptions>
-      <StyledLineChart>
+      <StyledInsightArea>
         {loading ? (
           <Spin size="large" />
         ) : hasData && error === null ? (
-          <SimpleLineChart
-            metrics={renderData.metrics}
-            groups={renderData.groups}
-            groupName="대"
-            xAxisDataKey="period"
-          />
+          <>
+            <StyledChartWrapper>
+              <SimpleLineChart
+                metrics={renderData.metrics}
+                groups={renderData.groups}
+                groupName="대"
+                xAxisDataKey="period"
+              />
+            </StyledChartWrapper>
+            <StyledSummaryWrapper>
+              <TextSummary
+                summaryData={summaryData}
+                hasGroup={renderData.groups.length > 3}
+              />
+            </StyledSummaryWrapper>
+          </>
         ) : (
           <Empty description={NO_DATA_MSG} />
         )}
-      </StyledLineChart>
-    </StyledInsightWrapper>
+      </StyledInsightArea>
+    </StyledContainer>
   );
 }
 
@@ -47,7 +62,7 @@ const StyledSpan = styled.span`
   bottom: 20px;
 `;
 
-const StyledInsightWrapper = styled.section`
+const StyledContainer = styled.section`
   width: 100%;
   height: 100%;
 `;
@@ -59,11 +74,26 @@ const StyledFormOptions = styled.section`
   display: flex;
   align-items: center;
   background: #f2f4f4;
-  overflow: hidden;
+  overflow: auto;
 `;
 
-const StyledLineChart = styled.section`
+const StyledChartWrapper = styled.div`
   ${FlexCenterRow};
+  overflow: hidden;
+  width: 70%;
+  height: 100%;
+`;
+
+const StyledSummaryWrapper = styled.div`
+  ${FlexCenterRow};
+  width: 30%;
+  height: 100%;
+`;
+
+const StyledInsightArea = styled.section`
+  ${FlexCenterRow};
+  padding: 3rem 3rem 3rem 1rem;
+  gap: 2rem;
   background: rgba(234, 237, 237, 0.87);
   width: 100%;
   height: 70%;

@@ -14,7 +14,8 @@ type Category =
   | '50000006' // 식품
   | '50005542' // 도서
   | '50000009' // 여가/생활편의
-  | '50000010'; // 면세점
+  | '50000010' // 면세점
+  | '';
 
 type RequestParams = RequiredParams & OptionalParams;
 type RequestParamKeys = keyof RequestParams;

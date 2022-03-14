@@ -25,7 +25,7 @@ export default function SimpleLineChart({
   xAxisDataKey,
 }: SimpleLineChartProps): JSX.Element {
   return (
-    <ResponsiveContainer width="90%" height="80%">
+    <ResponsiveContainer width="100%" height="100%">
       <LineChart
         data={metrics}
         margin={{

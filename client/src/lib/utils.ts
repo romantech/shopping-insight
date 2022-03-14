@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 // export type LineTypeKeys = keyof typeof LineChartLegendColor;
+
+import { categoryList } from './constants';
+
 export const isProd = process.env.NODE_ENV === 'production';
 
 export type LineColors = typeof LineChartLegendColor[Ages];
@@ -9,6 +13,11 @@ export const LineChartLegendColor = {
   '40': '#1E8449',
   '50': '#D4AC0D',
   '60': '#2C3E50 ',
+};
+
+export const getDayOfWeek = (date: string) => {
+  const week = ['일', '월', '화', '수', '목', '금', '토'];
+  return week[new Date(date).getDay()];
 };
 
 export const getLineColor = (group: Ages): LineColors => {
@@ -41,4 +50,56 @@ export function extractChartDataAndGroup(data: Data[]) {
   }, [] as Metric[]);
 
   return { groups: [...groups].sort(), metrics } as const;
+}
+
+export const getCategoryName = (categoryKey: Category) => {
+  return categoryList.filter(({ key }) => key === categoryKey)[0].label;
+};
+
+export const computeMaxAndMin = (data: Record<string, number>) => {
+  const values = Object.values(data);
+  const keys = Object.keys(data);
+
+  const maxRatioIdx = values.findIndex(v => v === Math.max(...values));
+  const minRatioIdx = values.findIndex(v => v === Math.min(...values));
+
+  return {
+    max: keys[maxRatioIdx],
+    min: keys[minRatioIdx],
+  } as const;
+};
+
+export function getMaxMinAge(rawData: InsightResponse) {
+  const sumOfRatio = rawData.results[0].data.reduce((acc, cur) => {
+    acc[cur.group] = (acc[cur.group] || 0) + cur.ratio;
+    return acc;
+  }, {} as Record<string, number>);
+
+  return computeMaxAndMin(sumOfRatio);
+}
+
+export function getMaxMinDate(renderData: RenderData) {
+  const sumOfRatio = renderData.metrics.reduce((acc, { period, ...ages }) => {
+    const agesValue = Object.values(ages) as Array<number>;
+    const sum = agesValue.reduce((a, c) => a + c, 0);
+    acc[period] = ((acc[period] as number) || 0) + sum;
+    return acc;
+  }, {});
+
+  return computeMaxAndMin(sumOfRatio as Record<string, number>);
+}
+
+export type SummaryData = ReturnType<typeof getTextSummaryData>;
+export function getTextSummaryData(
+  rawData: InsightResponse,
+  renderData: RenderData,
+) {
+  return {
+    startDate: rawData.startDate,
+    endDate: rawData.endDate,
+    keyword: rawData.results[0].keyword[0],
+    category: getCategoryName(renderData.category),
+    age: getMaxMinAge(rawData),
+    date: getMaxMinDate(renderData),
+  };
 }

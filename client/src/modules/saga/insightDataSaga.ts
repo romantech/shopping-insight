@@ -29,6 +29,7 @@ function* getInsightData(action: GetInsightData) {
       getInsightDataSuccess({
         data,
         computedData: {
+          category: action.payload.category,
           groups,
           metrics,
         },

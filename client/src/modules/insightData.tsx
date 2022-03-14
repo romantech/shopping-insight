@@ -16,6 +16,7 @@ interface InsightDataState {
 interface ResponsePayload {
   data: InsightResponse;
   computedData: {
+    category: Category;
     metrics: Metric[];
     groups: Ages[];
   };
@@ -26,6 +27,7 @@ const initialState: InsightDataState = {
   error: null,
   rawData: null,
   renderData: {
+    category: '',
     groups: [],
     metrics: [],
   },
