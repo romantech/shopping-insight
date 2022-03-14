@@ -11,6 +11,7 @@ import SingleDatePicker from 'components/forms/SingleDatePicker';
 import SelectForm from 'components/forms/SelectForm';
 import TextInput from 'components/forms/TextInput';
 import RadioButton from 'components/forms/RadioButton';
+import styled from 'styled-components/macro';
 
 interface RequiredFieldsProps {
   params: RequiredParams;
@@ -26,7 +27,7 @@ export default function RequiredFields({
   const limitDate = '2017-08-01';
 
   return (
-    <div>
+    <StyledFieldWrapper>
       <SingleDatePicker
         value={params.startDate}
         endDate={params.endDate}
@@ -63,6 +64,14 @@ export default function RequiredFields({
         paramKey="timeUnit"
       />
       {children}
-    </div>
+    </StyledFieldWrapper>
   );
 }
+
+export const StyledFieldWrapper = styled.div`
+  min-width: 960px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+`;

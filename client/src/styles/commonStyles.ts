@@ -3,7 +3,8 @@ import { css } from 'styled-components/macro';
 export const ScrollStyle = css`
   /* width */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
+    height: 8px;
   }
 
   /* Track */
@@ -22,6 +23,10 @@ export const ScrollStyle = css`
   }
 `;
 
+export const InfinitySansBold = css`
+  font-family: InfinitySans-BoldA1, serif;
+`;
+
 export const FlexCenterRow = css`
   display: flex;
   align-items: center;
@@ -31,10 +36,4 @@ export const FlexCenterRow = css`
 export const FlexCenterColumn = css`
   ${FlexCenterRow};
   flex-direction: column;
-`;
-
-export const FlexStartRow = css`
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
 `;

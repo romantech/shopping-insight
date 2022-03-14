@@ -2,6 +2,7 @@ import React from 'react';
 import { ageList, deviceList, genderList } from 'lib/constants';
 import RadioButton from 'components/forms/RadioButton';
 import GroupCheckbox from 'components/forms/GroupCheckbox';
+import { StyledFieldWrapper } from './RequiredFields';
 
 interface OptionalFieldsProps {
   params: OptionalParams;
@@ -15,7 +16,7 @@ export default function OptionalFields({
   children,
 }: OptionalFieldsProps): JSX.Element {
   return (
-    <div>
+    <StyledFieldWrapper>
       <GroupCheckbox
         value={params.ages as Ages[]}
         options={ageList}
@@ -35,6 +36,6 @@ export default function OptionalFields({
         paramKey="device"
       />
       {children}
-    </div>
+    </StyledFieldWrapper>
   );
 }

@@ -89,7 +89,7 @@ export const deviceList = [
   },
   {
     key: 'mo',
-    label: 'Mobile',
+    label: 'MOBILE',
   },
 ];
 

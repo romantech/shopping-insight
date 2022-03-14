@@ -29,7 +29,6 @@ export const checkValidKoWords = (str: string, validLen: number): boolean => {
   return !re.test(str) && str.length >= validLen;
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function extractChartDataAndGroup(data: Data[]) {
   const groups: Set<Ages> = new Set();
 
@@ -57,36 +56,40 @@ export const getCategoryName = (categoryKey: Category) => {
 };
 
 export const computeMaxAndMin = (data: Record<string, number>) => {
-  const values = Object.values(data);
-  const keys = Object.keys(data);
+  const valueList = Object.values(data);
+  const keyList = Object.keys(data);
 
-  const maxRatioIdx = values.findIndex(v => v === Math.max(...values));
-  const minRatioIdx = values.findIndex(v => v === Math.min(...values));
+  const maxRatioIdx = valueList.findIndex(v => v === Math.max(...valueList));
+  const minRatioIdx = valueList.findIndex(v => v === Math.min(...valueList));
 
   return {
-    max: keys[maxRatioIdx],
-    min: keys[minRatioIdx],
+    max: keyList[maxRatioIdx],
+    min: keyList[minRatioIdx],
   } as const;
 };
 
 export function getMaxMinAge(rawData: InsightResponse) {
-  const sumOfRatio = rawData.results[0].data.reduce((acc, cur) => {
+  const sumOfRatioByAge = rawData.results[0].data.reduce((acc, cur) => {
     acc[cur.group] = (acc[cur.group] || 0) + cur.ratio;
     return acc;
   }, {} as Record<string, number>);
 
-  return computeMaxAndMin(sumOfRatio);
+  return computeMaxAndMin(sumOfRatioByAge);
 }
 
 export function getMaxMinDate(renderData: RenderData) {
-  const sumOfRatio = renderData.metrics.reduce((acc, { period, ...ages }) => {
-    const agesValue = Object.values(ages) as Array<number>;
-    const sum = agesValue.reduce((a, c) => a + c, 0);
-    acc[period] = ((acc[period] as number) || 0) + sum;
-    return acc;
-  }, {});
+  const sumOfRatioByDate = renderData.metrics.reduce(
+    (acc, { period, ...age }) => {
+      const ageList = Object.values(age) as Array<number>;
+      const sum = ageList.reduce((a, c) => a + c, 0);
 
-  return computeMaxAndMin(sumOfRatio as Record<string, number>);
+      acc[period] = ((acc[period] as number) || 0) + sum;
+      return acc;
+    },
+    {},
+  );
+
+  return computeMaxAndMin(sumOfRatioByDate as Record<string, number>);
 }
 
 export type SummaryData = ReturnType<typeof getTextSummaryData>;

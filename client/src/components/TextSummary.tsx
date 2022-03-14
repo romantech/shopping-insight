@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FlexCenterColumn } from 'styles/commonStyles';
+import { InfinitySansBold } from 'styles/commonStyles';
 import { getDayOfWeek, SummaryData } from 'lib/utils';
 
 interface TextSummaryProps {
@@ -28,8 +28,8 @@ export default function TextSummary({
       </p>
       {hasGroup && (
         <p>
-          😢 하지만 <span>{age.min}대</span>는 상대적으로{' '}
-          <StyledHighlight>{keyword}</StyledHighlight>에 관심이 별로 없는 것
+          😢 하지만 <span>{age.min}대</span>는 다른 연령대에 비해{' '}
+          <StyledHighlight>{keyword}</StyledHighlight>에 별로 관심이 없는 것
           같네요
         </p>
       )}
@@ -41,17 +41,18 @@ export default function TextSummary({
   );
 }
 
-const StyledHighlight = styled.span`
-  background-color: rgba(255, 215, 0, 0.47);
-`;
-
-const StyledWrapper = styled.section`
-  ${FlexCenterColumn};
+const StyledWrapper = styled.aside`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   gap: 2rem;
+
   width: 100%;
   height: 100%;
-  font-size: calc(1rem + 0.8vw);
-  font-weight: bold;
+  margin-top: 2rem;
+  overflow-y: auto;
+  font-size: 1.55rem;
   color: gray;
 
   p {
@@ -60,7 +61,12 @@ const StyledWrapper = styled.section`
   }
 
   span {
-    color: #414141;
+    color: #4b4b4b;
     word-break: break-all;
+    ${InfinitySansBold};
   }
+`;
+
+const StyledHighlight = styled.span`
+  background-color: rgba(255, 215, 0, 0.47);
 `;

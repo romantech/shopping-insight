@@ -22,10 +22,10 @@ export default function ShoppingInsight(): JSX.Element {
 
   return (
     <StyledContainer>
-      <StyledFormOptions>
+      <StyledFormOptionArea>
         <FieldContainer isLoading={loading} />
         <StyledSpan>{INTRODUCE_MSG}</StyledSpan>
-      </StyledFormOptions>
+      </StyledFormOptionArea>
       <StyledInsightArea>
         {loading ? (
           <Spin size="large" />
@@ -39,12 +39,12 @@ export default function ShoppingInsight(): JSX.Element {
                 xAxisDataKey="period"
               />
             </StyledChartWrapper>
-            <StyledSummaryWrapper>
+            <StyledTextSummaryWrapper>
               <TextSummary
                 summaryData={summaryData}
                 hasGroup={renderData.groups.length > 3}
               />
-            </StyledSummaryWrapper>
+            </StyledTextSummaryWrapper>
           </>
         ) : (
           <Empty description={NO_DATA_MSG} />
@@ -54,27 +54,33 @@ export default function ShoppingInsight(): JSX.Element {
   );
 }
 
-const StyledSpan = styled.span`
-  font-size: 0.88rem;
-  color: #919191;
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
+const StyledContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
 `;
 
-const StyledContainer = styled.section`
-  width: 100%;
-  height: 100%;
-`;
-
-const StyledFormOptions = styled.section`
+const StyledFormOptionArea = styled.section`
+  ${FlexCenterRow};
   position: relative;
   width: 100%;
   height: 30%;
-  display: flex;
-  align-items: center;
   background: #f2f4f4;
   overflow: auto;
+  padding: 1rem;
+`;
+
+const StyledInsightArea = styled.section`
+  ${FlexCenterRow};
+  padding: 3rem 3rem 3rem 1.5rem;
+  gap: 2.5rem;
+  background: rgba(234, 237, 237, 0.87);
+  width: 100%;
+  height: 70%;
+
+  .ant-empty-description {
+    font-size: 1rem;
+    color: #919191;
+  }
 `;
 
 const StyledChartWrapper = styled.div`
@@ -84,22 +90,16 @@ const StyledChartWrapper = styled.div`
   height: 100%;
 `;
 
-const StyledSummaryWrapper = styled.div`
-  ${FlexCenterRow};
+const StyledTextSummaryWrapper = styled.div`
   width: 30%;
   height: 100%;
+  padding-bottom: 0.8rem;
 `;
 
-const StyledInsightArea = styled.section`
-  ${FlexCenterRow};
-  padding: 3rem 3rem 3rem 1rem;
-  gap: 2rem;
-  background: rgba(234, 237, 237, 0.87);
-  width: 100%;
-  height: 70%;
-
-  .ant-empty-description {
-    font-size: 1rem;
-    color: #919191;
-  }
+const StyledSpan = styled.span`
+  font-size: 0.88rem;
+  color: #919191;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 `;

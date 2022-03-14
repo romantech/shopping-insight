@@ -52,6 +52,7 @@ export default function SingleDatePicker({
           placeholder={placeholder || paramKey}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
+          style={{ width: 153 }}
           size={size}
           value={value ? moment(value) : null}
           status={!isValid && isFocus ? 'error' : ''}

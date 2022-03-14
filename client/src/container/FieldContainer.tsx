@@ -10,7 +10,11 @@ import {
   SEARCH_BTN_TXT,
 } from 'lib/constants';
 import { setInsightParams } from 'modules/insightParams';
-import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
+import {
+  FlexCenterColumn,
+  FlexCenterRow,
+  InfinitySansBold,
+} from 'styles/commonStyles';
 import { getInsightDataRequest } from 'modules/insightData';
 import RequiredFields from 'container/RequiredFields';
 import OptionalFields from 'container/OptionalFields';
@@ -71,22 +75,19 @@ export default function FieldContainer({
   );
 }
 
-const StyledWrapper = styled.section`
+const StyledWrapper = styled.div`
   ${FlexCenterColumn};
-  padding: 1rem;
   width: 100%;
   gap: 2rem;
+
   h1 {
+    ${InfinitySansBold};
+    min-width: fit-content;
+    text-align: right;
     font-size: 1.8rem;
-    font-weight: bold;
   }
 `;
-const StyledFields = styled.section`
+const StyledFields = styled.div`
   ${FlexCenterRow};
   gap: 3rem;
-
-  & > div {
-    ${FlexCenterRow};
-    gap: 1rem;
-  }
 `;
