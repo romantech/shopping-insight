@@ -1,6 +1,6 @@
-import { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 
-export const ScrollStyle = css`
+export const ScrollStylePC = css`
   /* 정밀 포인팅 장치를 위한(터치가 아닌 장치) CSS */
   @media screen and (any-pointer: fine) {
     /* width */
@@ -39,4 +39,11 @@ export const FlexCenterRow = css`
 export const FlexCenterColumn = css`
   ${FlexCenterRow};
   flex-direction: column;
+`;
+
+export const EmptyElement = styled.div<{ [key in string]?: string }>`
+  width: ${props => props.width};
+  height: ${props => props.height};
+  padding: ${props => props.padding};
+  margin: ${props => props.margin};
 `;

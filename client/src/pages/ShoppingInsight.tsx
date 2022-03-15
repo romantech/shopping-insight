@@ -47,7 +47,7 @@ export default function ShoppingInsight(): JSX.Element {
             </StyledTextSummaryArea>
           </>
         ) : (
-          <Empty description={NO_DATA_MSG} />
+          <Empty style={{ whiteSpace: 'pre-line' }} description={NO_DATA_MSG} />
         )}
       </StyledInsightWrapper>
     </>
@@ -58,7 +58,7 @@ const StyledFormOptionWrapper = styled.section`
   ${FlexCenterRow};
   position: relative;
   height: 30%;
-  background: #f2f4f4;
+  background: var(--bg-form-option);
   overflow-x: auto;
   padding: 1.5rem;
 `;
@@ -67,8 +67,9 @@ const StyledInsightWrapper = styled.section`
   ${FlexCenterRow};
   height: 70%;
   gap: 2.5rem;
-  background: rgba(234, 237, 237, 0.87);
+  background: var(--bg-insight);
   padding: 3rem 3rem 3rem 1.5rem;
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
     ${FlexCenterColumn};
@@ -80,13 +81,14 @@ const StyledInsightWrapper = styled.section`
 
   .ant-empty-description {
     font-size: 1rem;
-    color: #919191;
+    color: var(--text-gray50);
   }
 `;
 
 const StyledChartArea = styled.div`
   ${FlexCenterRow};
   width: 70%;
+  max-width: 1080px;
   height: 100%;
 
   @media (max-width: 768px) {
@@ -98,6 +100,7 @@ const StyledChartArea = styled.div`
 
 const StyledTextSummaryArea = styled.div`
   width: 30%;
+  max-width: 550px;
   height: 100%;
   padding-top: 2.2rem;
   padding-bottom: 0.8rem;
@@ -113,5 +116,9 @@ const StyledSpan = styled.span`
   right: 1.2rem;
   bottom: 1.2rem;
   font-size: 0.88rem;
-  color: #919191;
+  color: var(--text-gray50);
+
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;

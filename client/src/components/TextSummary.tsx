@@ -49,7 +49,7 @@ const StyledWrapper = styled.aside`
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: gray;
 
   @media (max-width: 768px) {
@@ -64,11 +64,11 @@ const StyledWrapper = styled.aside`
 
   span {
     ${InfinitySansBold};
-    color: #4b4b4b;
+    color: var(--text-gray100);
     word-break: break-all;
   }
 `;
 
 const StyledHighlight = styled.span`
-  background-color: rgba(255, 215, 0, 0.47);
+  background-color: var(--bg-yellow);
 `;

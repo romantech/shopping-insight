@@ -6,10 +6,10 @@ import { SearchOutlined } from '@ant-design/icons';
 import { RootState } from 'modules';
 import { SEARCH_BTN_TXT } from 'lib/constants';
 import { setInsightParams } from 'modules/insightParams';
-import { FlexCenterColumn } from 'styles/commonStyles';
 import { getInsightDataRequest } from 'modules/insightData';
 import RequiredFields from 'container/RequiredFields';
 import OptionalFields from 'container/OptionalFields';
+import { FlexCenterColumn } from '../styles/commonStyles';
 
 interface FieldContainerProps {
   isLoading: boolean;
@@ -64,5 +64,6 @@ export default function FieldContainer({
 const StyledContainer = styled.div`
   ${FlexCenterColumn};
   width: 100%;
+  height: 100%;
   gap: 2rem;
 `;

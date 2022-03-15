@@ -8,7 +8,7 @@ export const INPUT_KEYWORD_PLACEHOLDER = '키워드를 입력하세요';
 export const SELECT_FORM_PLACEHOLDER = '카테고리';
 export const INTRODUCE_MSG = '쇼핑인사이트 키워드/연령별 트렌드 조회';
 export const NO_DATA_MSG =
-  '데이터가 없어요! 필수 항목을 모두 입력한 후 검색해보세요';
+  '데이터가 없어요! \n필수 항목을 모두 입력한 후 검색해보세요';
 
 const age = ['10', '20', '30', '40', '50', '60'];
 export const ageList = age.map(el => ({ key: el, label: `${el}대` }));

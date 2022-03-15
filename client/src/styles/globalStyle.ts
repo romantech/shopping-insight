@@ -1,10 +1,10 @@
 import { createGlobalStyle } from 'styled-components/macro';
 import reset from 'styled-reset';
-import { ScrollStyle } from './commonStyles';
+import { ScrollStylePC } from './commonStyles';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
-  ${ScrollStyle};
+  ${ScrollStylePC};
 
   @font-face {
     font-family: 'InfinitySans-RegularA1';
@@ -18,6 +18,14 @@ const GlobalStyle = createGlobalStyle`
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-BoldA1.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+  }
+
+  :root {
+    --bg-form-option: #f2f4f4;
+    --bg-insight: rgba(234, 237, 237, 0.87);
+    --bg-yellow: rgba(255, 215, 0, 0.47);
+    --text-gray50: #919191;
+    --text-gray100: #4b4b4b; 
   }
 
   *,

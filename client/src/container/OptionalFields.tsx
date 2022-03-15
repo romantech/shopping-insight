@@ -8,6 +8,7 @@ import {
 import RadioButton from 'components/forms/RadioButton';
 import GroupCheckbox from 'components/forms/GroupCheckbox';
 import { StyledFieldWrapper } from './RequiredFields';
+import { EmptyElement } from '../styles/commonStyles';
 
 interface OptionalFieldsProps {
   params: OptionalParams;
@@ -42,6 +43,7 @@ export default function OptionalFields({
         paramKey="device"
       />
       {children}
+      <EmptyElement padding="0 0.8rem 0 0" height="100%" />
     </StyledFieldWrapper>
   );
 }
