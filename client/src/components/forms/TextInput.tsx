@@ -5,6 +5,7 @@ interface TextInputProps {
   value: string;
   callback: InsightParamsHandler;
   paramKey: RequestParamKeys;
+  width?: number | string;
   validLen?: number;
   placeholder?: string;
 }
@@ -13,6 +14,7 @@ export default function TextInput({
   value,
   callback,
   paramKey,
+  width,
   validLen = 1,
   placeholder,
 }: TextInputProps): JSX.Element {
@@ -40,7 +42,7 @@ export default function TextInput({
         value={value}
         maxLength={20}
         status={!isValid && isFocus ? 'error' : ''}
-        style={{ maxWidth: 200 }}
+        style={{ minWidth: width }}
         onChange={onChangeHandler}
       />
     </Tooltip>

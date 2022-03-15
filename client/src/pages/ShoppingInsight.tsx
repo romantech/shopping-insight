@@ -1,14 +1,14 @@
 import React from 'react';
-import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
-import { Empty, Spin } from 'antd';
-import FieldContainer from 'container/FieldContainer';
 import { RootState } from 'modules';
-import { FlexCenterRow } from 'styles/commonStyles';
+import styled from 'styled-components/macro';
+import { Empty, Spin } from 'antd';
+import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
+import FieldContainer from 'container/FieldContainer';
 import SimpleLineChart from 'components/charts/SimpleLineChart';
+import TextSummary from 'components/TextSummary';
 import { INTRODUCE_MSG, NO_DATA_MSG } from 'lib/constants';
-import { getTextSummaryData, SummaryData } from '../lib/utils';
-import TextSummary from '../components/TextSummary';
+import { getTextSummaryData, SummaryData } from 'lib/utils';
 
 export default function ShoppingInsight(): JSX.Element {
   const { loading, renderData, rawData, error } = useSelector(
@@ -21,61 +21,62 @@ export default function ShoppingInsight(): JSX.Element {
     : ({} as SummaryData);
 
   return (
-    <StyledContainer>
-      <StyledFormOptionArea>
+    <>
+      <StyledFormOptionWrapper>
         <FieldContainer isLoading={loading} />
         <StyledSpan>{INTRODUCE_MSG}</StyledSpan>
-      </StyledFormOptionArea>
-      <StyledInsightArea>
+      </StyledFormOptionWrapper>
+      <StyledInsightWrapper>
         {loading ? (
           <Spin size="large" />
         ) : hasData && error === null ? (
           <>
-            <StyledChartWrapper>
+            <StyledChartArea>
               <SimpleLineChart
                 metrics={renderData.metrics}
                 groups={renderData.groups}
                 groupName="대"
                 xAxisDataKey="period"
               />
-            </StyledChartWrapper>
-            <StyledTextSummaryWrapper>
+            </StyledChartArea>
+            <StyledTextSummaryArea>
               <TextSummary
                 summaryData={summaryData}
                 hasGroup={renderData.groups.length > 3}
               />
-            </StyledTextSummaryWrapper>
+            </StyledTextSummaryArea>
           </>
         ) : (
           <Empty description={NO_DATA_MSG} />
         )}
-      </StyledInsightArea>
-    </StyledContainer>
+      </StyledInsightWrapper>
+    </>
   );
 }
 
-const StyledContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-`;
-
-const StyledFormOptionArea = styled.section`
+const StyledFormOptionWrapper = styled.section`
   ${FlexCenterRow};
   position: relative;
-  width: 100%;
   height: 30%;
   background: #f2f4f4;
-  overflow: auto;
-  padding: 1rem;
+  overflow-x: auto;
+  padding: 1.5rem;
 `;
 
-const StyledInsightArea = styled.section`
+const StyledInsightWrapper = styled.section`
   ${FlexCenterRow};
-  padding: 3rem 3rem 3rem 1.5rem;
+  height: 70%;
   gap: 2.5rem;
   background: rgba(234, 237, 237, 0.87);
-  width: 100%;
-  height: 70%;
+  padding: 3rem 3rem 3rem 1.5rem;
+
+  @media (max-width: 768px) {
+    ${FlexCenterColumn};
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+    min-height: 70%; // 로딩 스피너 나올 때 흰창 나와서 min-height 지정
+    height: auto;
+  }
 
   .ant-empty-description {
     font-size: 1rem;
@@ -83,23 +84,34 @@ const StyledInsightArea = styled.section`
   }
 `;
 
-const StyledChartWrapper = styled.div`
+const StyledChartArea = styled.div`
   ${FlexCenterRow};
-  overflow: hidden;
   width: 70%;
   height: 100%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    min-height: 350px;
+    height: 40vh;
+  }
 `;
 
-const StyledTextSummaryWrapper = styled.div`
+const StyledTextSummaryArea = styled.div`
   width: 30%;
   height: 100%;
+  padding-top: 2.2rem;
   padding-bottom: 0.8rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 const StyledSpan = styled.span`
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
   font-size: 0.88rem;
   color: #919191;
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
 `;

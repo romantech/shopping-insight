@@ -1,25 +1,28 @@
 import { css } from 'styled-components/macro';
 
 export const ScrollStyle = css`
-  /* width */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
+  /* 정밀 포인팅 장치를 위한(터치가 아닌 장치) CSS */
+  @media screen and (any-pointer: fine) {
+    /* width */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: none;
-  }
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: rgba(232, 232, 232, 0.76);
+    }
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #d3d3d3;
-  }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #d3d3d3;
+    }
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #bdbdbd;
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #bdbdbd;
+    }
   }
 `;
 

@@ -20,7 +20,11 @@ export default function GroupCheckbox({
   };
 
   return (
-    <Checkbox.Group onChange={onChangeHandler} value={value}>
+    <Checkbox.Group
+      onChange={onChangeHandler}
+      value={value}
+      style={{ minWidth: 'max-content' }}
+    >
       {options.map(({ key, label }) => (
         <Checkbox key={key} value={key}>
           {label}

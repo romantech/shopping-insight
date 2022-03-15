@@ -25,6 +25,7 @@ export default function RadioButton({
       onChange={onChangeHandler}
       value={value}
       buttonStyle="outline"
+      style={{ minWidth: 'max-content' }}
       size={size}
     >
       {options.map(({ key, label }) => (

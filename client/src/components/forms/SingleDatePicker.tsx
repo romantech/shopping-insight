@@ -12,6 +12,7 @@ interface SingleDatePickerProps {
   endDate?: string;
   startDate?: string;
   size?: FormSize;
+  width?: number | string;
   placeholder?: string;
 }
 
@@ -23,6 +24,7 @@ export default function SingleDatePicker({
   endDate,
   startDate,
   size = 'large',
+  width,
   placeholder,
 }: SingleDatePickerProps): JSX.Element {
   const [isValid, setIsValid] = useState(false);
@@ -52,7 +54,7 @@ export default function SingleDatePicker({
           placeholder={placeholder || paramKey}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
-          style={{ width: 153 }}
+          style={{ minWidth: width }}
           size={size}
           value={value ? moment(value) : null}
           status={!isValid && isFocus ? 'error' : ''}

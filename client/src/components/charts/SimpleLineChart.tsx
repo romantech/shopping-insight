@@ -39,7 +39,14 @@ export default function SimpleLineChart({
         <XAxis dataKey={xAxisDataKey} />
         <YAxis />
         <Tooltip />
-        <Legend verticalAlign="top" height={36} iconType="rect" iconSize={20} />
+        <Legend
+          layout="horizontal"
+          verticalAlign="top"
+          align="center"
+          height={40}
+          iconType="rect"
+          iconSize={20}
+        />
         {groups.map(group => (
           <Line
             name={`${group}${groupName}`} // legend 에 표시될 이름

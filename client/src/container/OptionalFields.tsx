@@ -1,5 +1,10 @@
 import React from 'react';
-import { ageList, deviceList, genderList } from 'lib/constants';
+import {
+  ageList,
+  deviceList,
+  genderList,
+  OPTIONAL_FIELD_TXT,
+} from 'lib/constants';
 import RadioButton from 'components/forms/RadioButton';
 import GroupCheckbox from 'components/forms/GroupCheckbox';
 import { StyledFieldWrapper } from './RequiredFields';
@@ -17,6 +22,7 @@ export default function OptionalFields({
 }: OptionalFieldsProps): JSX.Element {
   return (
     <StyledFieldWrapper>
+      <h1>{OPTIONAL_FIELD_TXT}</h1>
       <GroupCheckbox
         value={params.ages as Ages[]}
         options={ageList}

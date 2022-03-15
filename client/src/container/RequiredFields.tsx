@@ -3,6 +3,7 @@ import {
   categoryList,
   END_DATE_TXT,
   INPUT_KEYWORD_PLACEHOLDER,
+  REQUIRED_FIELD_TXT,
   SELECT_FORM_PLACEHOLDER,
   START_DATE_TXT,
   timeUnitList,
@@ -12,6 +13,7 @@ import SelectForm from 'components/forms/SelectForm';
 import TextInput from 'components/forms/TextInput';
 import RadioButton from 'components/forms/RadioButton';
 import styled from 'styled-components/macro';
+import { InfinitySansBold } from '../styles/commonStyles';
 
 interface RequiredFieldsProps {
   params: RequiredParams;
@@ -28,12 +30,14 @@ export default function RequiredFields({
 
   return (
     <StyledFieldWrapper>
+      <h1>{REQUIRED_FIELD_TXT}</h1>
       <SingleDatePicker
         value={params.startDate}
         endDate={params.endDate}
         callback={handler}
         limitDate={limitDate}
         paramKey="startDate"
+        width={153}
         placeholder={START_DATE_TXT}
       />
       <SingleDatePicker
@@ -42,6 +46,7 @@ export default function RequiredFields({
         callback={handler}
         limitDate={limitDate}
         paramKey="endDate"
+        width={153}
         placeholder={END_DATE_TXT}
       />
       <SelectForm
@@ -49,12 +54,14 @@ export default function RequiredFields({
         options={categoryList}
         callback={handler}
         paramKey="category"
+        width={200}
         placeholder={SELECT_FORM_PLACEHOLDER}
       />
       <TextInput
         value={params.keyword}
         callback={handler}
         paramKey="keyword"
+        width={200}
         placeholder={INPUT_KEYWORD_PLACEHOLDER}
       />
       <RadioButton
@@ -69,9 +76,15 @@ export default function RequiredFields({
 }
 
 export const StyledFieldWrapper = styled.div`
-  min-width: 960px;
+  max-width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 1rem;
+
+  h1 {
+    ${InfinitySansBold};
+    min-width: 7.5rem;
+    margin-right: 1rem;
+    font-size: 1.7rem;
+  }
 `;

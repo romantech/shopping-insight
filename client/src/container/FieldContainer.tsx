@@ -4,17 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { RootState } from 'modules';
-import {
-  OPTIONAL_FIELD_TXT,
-  REQUIRED_FIELD_TXT,
-  SEARCH_BTN_TXT,
-} from 'lib/constants';
+import { SEARCH_BTN_TXT } from 'lib/constants';
 import { setInsightParams } from 'modules/insightParams';
-import {
-  FlexCenterColumn,
-  FlexCenterRow,
-  InfinitySansBold,
-} from 'styles/commonStyles';
+import { FlexCenterColumn } from 'styles/commonStyles';
 import { getInsightDataRequest } from 'modules/insightData';
 import RequiredFields from 'container/RequiredFields';
 import OptionalFields from 'container/OptionalFields';
@@ -51,43 +43,26 @@ export default function FieldContainer({
   };
 
   return (
-    <StyledWrapper>
-      <StyledFields>
-        <h1>{REQUIRED_FIELD_TXT}</h1>
-        <RequiredFields params={requiredParams} handler={onChangeHandler} />
-      </StyledFields>
-      <StyledFields>
-        <h1>{OPTIONAL_FIELD_TXT}</h1>
-        <OptionalFields params={optionalParams} handler={onChangeHandler}>
-          <Button
-            type="primary"
-            icon={<SearchOutlined />}
-            size="large"
-            disabled={!isValid || isLoading}
-            onClick={buttonHandler}
-            style={{ width: 118 }}
-          >
-            {SEARCH_BTN_TXT}
-          </Button>
-        </OptionalFields>
-      </StyledFields>
-    </StyledWrapper>
+    <StyledContainer>
+      <RequiredFields params={requiredParams} handler={onChangeHandler} />
+      <OptionalFields params={optionalParams} handler={onChangeHandler}>
+        <Button
+          type="primary"
+          icon={<SearchOutlined />}
+          size="large"
+          disabled={!isValid || isLoading}
+          onClick={buttonHandler}
+          style={{ minWidth: 118 }}
+        >
+          {SEARCH_BTN_TXT}
+        </Button>
+      </OptionalFields>
+    </StyledContainer>
   );
 }
 
-const StyledWrapper = styled.div`
+const StyledContainer = styled.div`
   ${FlexCenterColumn};
   width: 100%;
   gap: 2rem;
-
-  h1 {
-    ${InfinitySansBold};
-    min-width: fit-content;
-    text-align: right;
-    font-size: 1.8rem;
-  }
-`;
-const StyledFields = styled.div`
-  ${FlexCenterRow};
-  gap: 3rem;
 `;

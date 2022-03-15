@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { InfinitySansBold } from 'styles/commonStyles';
+import { FlexCenterColumn, InfinitySansBold } from 'styles/commonStyles';
 import { getDayOfWeek, SummaryData } from 'lib/utils';
 
 interface TextSummaryProps {
@@ -42,18 +42,20 @@ export default function TextSummary({
 }
 
 const StyledWrapper = styled.aside`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  ${FlexCenterColumn};
   justify-content: flex-start;
   gap: 2rem;
 
   width: 100%;
   height: 100%;
-  margin-top: 2rem;
   overflow-y: auto;
-  font-size: 1.55rem;
+  font-size: 1.5rem;
   color: gray;
+
+  @media (max-width: 768px) {
+    overflow: initial;
+    font-size: 1.3rem;
+  }
 
   p {
     letter-spacing: 0.15rem;
@@ -61,9 +63,9 @@ const StyledWrapper = styled.aside`
   }
 
   span {
+    ${InfinitySansBold};
     color: #4b4b4b;
     word-break: break-all;
-    ${InfinitySansBold};
   }
 `;
 
