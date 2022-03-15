@@ -90,10 +90,11 @@ const StyledChartArea = styled.div`
   width: 70%;
   max-width: 1080px;
   height: 100%;
+  max-height: 39rem;
 
   @media (max-width: 768px) {
     width: 100%;
-    min-height: 350px;
+    min-height: 22rem;
     height: 40vh;
   }
 `;
@@ -102,6 +103,7 @@ const StyledTextSummaryArea = styled.div`
   width: 30%;
   max-width: 550px;
   height: 100%;
+  max-height: 39rem;
   padding-top: 2.2rem;
   padding-bottom: 0.8rem;
 
