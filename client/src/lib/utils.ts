@@ -5,7 +5,6 @@ import { categoryList } from './constants';
 
 export const isProd = process.env.NODE_ENV === 'production';
 
-export type LineColors = typeof LineChartLegendColor[Ages];
 export const LineChartLegendColor = {
   '10': '#C0392B ',
   '20': '#AF7AC5',
@@ -15,13 +14,22 @@ export const LineChartLegendColor = {
   '60': '#2C3E50 ',
 };
 
+export type LineColors = typeof LineChartLegendColor[Ages];
+export const getLineColor = (group: Ages): LineColors => {
+  return LineChartLegendColor[group];
+};
+
 export const getDayOfWeek = (date: string) => {
   const week = ['일', '월', '화', '수', '목', '금', '토'];
   return week[new Date(date).getDay()];
 };
 
-export const getLineColor = (group: Ages): LineColors => {
-  return LineChartLegendColor[group];
+// 해당 달의 몇번째 주(周)인지 확인 reference: https://stackoverflow.com/a/43105839/3730665
+export const getWeekOfMonth = (sourceDate: string) => {
+  const d = new Date(sourceDate);
+  const date = d.getDate();
+  const day = d.getDay();
+  return Math.ceil((date + 6 - day) / 7);
 };
 
 export const checkValidKoWords = (str: string, validLen: number): boolean => {
@@ -51,7 +59,7 @@ export function extractChartDataAndGroup(data: Data[]) {
   return { groups: [...groups].sort(), metrics } as const;
 }
 
-export const getCategoryName = (categoryKey: Category) => {
+export const getCategoryName = (categoryKey: Category | null) => {
   return categoryList.filter(({ key }) => key === categoryKey)[0].label;
 };
 
@@ -101,6 +109,7 @@ export function getTextSummaryData(
     startDate: rawData.startDate,
     endDate: rawData.endDate,
     keyword: rawData.results[0].keyword[0],
+    timeUnit: rawData.timeUnit,
     category: getCategoryName(renderData.category),
     age: getMaxMinAge(rawData),
     date: getMaxMinDate(renderData),

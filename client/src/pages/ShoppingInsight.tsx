@@ -69,7 +69,7 @@ const StyledInsightWrapper = styled.section`
   gap: 2.5rem;
   background: var(--bg-insight);
   padding: 3rem 3rem 3rem 1.5rem;
-  overflow-x: hidden;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     ${FlexCenterColumn};

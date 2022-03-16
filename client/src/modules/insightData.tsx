@@ -27,7 +27,7 @@ const initialState: InsightDataState = {
   error: null,
   rawData: null,
   renderData: {
-    category: '',
+    category: null,
     groups: [],
     metrics: [],
   },

@@ -10,7 +10,7 @@ import {
 } from 'modules/insightData';
 
 interface GetInsightData {
-  type: string; // 액션 타입
+  type: typeof GET_INSIGHT_DATA_REQUEST; // 액션 타입
   payload: RequestParams;
 }
 
@@ -19,7 +19,7 @@ function* getInsightData(action: GetInsightData) {
     // yield all[call(...), call(...)] -> 병렬 처리 promise.all 과 동일. 프로미스가 하나라도 거절되면 모두 거절.
     // yield call(func, funcParams1, funcParams2) : 결과 반환할 때까지 대기(동기 실행)
     // 첫번째 파라미터엔 Promise 반환 함수, 두번째 파라미터엔 해당 함수에 들어갈 인자
-    const { data }: AxiosResponse = yield call(
+    const { data }: AxiosResponse<InsightResponse> = yield call(
       api.shoppingInsightKeywordAge,
       action.payload,
     );

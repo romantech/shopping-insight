@@ -42,8 +42,8 @@ export const FlexCenterColumn = css`
 `;
 
 export const EmptyElement = styled.div<{ [key in string]?: string }>`
-  width: ${props => props.width};
-  height: ${props => props.height};
+  width: ${props => props.width || 'fit-content'};
+  height: ${props => props.height || 'fit-content'};
   padding: ${props => props.padding};
   margin: ${props => props.margin};
 `;

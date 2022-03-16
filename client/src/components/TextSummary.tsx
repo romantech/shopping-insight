@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FlexCenterColumn, InfinitySansBold } from 'styles/commonStyles';
-import { getDayOfWeek, SummaryData } from 'lib/utils';
+import { getDayOfWeek, getWeekOfMonth, SummaryData } from 'lib/utils';
 
 interface TextSummaryProps {
   summaryData: SummaryData;
@@ -12,30 +12,43 @@ export default function TextSummary({
   summaryData,
   hasGroup,
 }: TextSummaryProps): JSX.Element {
-  const { startDate, endDate, keyword, age, date, category } = summaryData;
-  const startDay = getDayOfWeek(startDate);
-  const endDay = getDayOfWeek(endDate);
-  const maxDay = getDayOfWeek(date.max);
-  const minDay = getDayOfWeek(date.min);
+  const { startDate, endDate, keyword, age, date, category, timeUnit } =
+    summaryData;
+
+  const getRenderDateText = (fullDate: typeof date.max | typeof date.min) => {
+    const [year, month] = fullDate.split('-');
+
+    switch (timeUnit) {
+      case 'month':
+        return `${year}년 ${month}월`;
+      case 'week':
+        return `${year}년 ${month}월 ${getWeekOfMonth(fullDate)}째주`;
+      default:
+        return `${fullDate}(${getDayOfWeek(fullDate)})`;
+    }
+  };
 
   return (
     <StyledWrapper>
       <p>
-        💸 <span>{`${startDate}(${startDay})`}</span> 부터{' '}
-        <span>{`${endDate}(${endDay})`}</span> 까지 <span>{category}</span>{' '}
-        카테고리의 <StyledHighlight>{keyword}</StyledHighlight> 키워드는{' '}
-        <span>{age.max}대</span>가 가장 큰 관심을 보였어요
+        💸 <StyledBold>{`${getRenderDateText(startDate)}`}</StyledBold>부터{' '}
+        <StyledBold>{`${getRenderDateText(endDate)}`}</StyledBold>까지{' '}
+        <StyledBold>{category}</StyledBold> 카테고리의{' '}
+        <StyledBold highlight>{keyword}</StyledBold> 키워드는{' '}
+        <StyledBold>{age.max}대</StyledBold>가 가장 큰 관심을 보였어요
       </p>
       {hasGroup && (
         <p>
-          😢 하지만 <span>{age.min}대</span>는 다른 연령대에 비해{' '}
-          <StyledHighlight>{keyword}</StyledHighlight>에 별로 관심이 없는 것
+          😢 하지만 <StyledBold>{age.min}대</StyledBold>는 다른 연령대에 비해{' '}
+          <StyledBold highlight>{keyword}</StyledBold>에 별로 관심이 없는 것
           같네요
         </p>
       )}
       <p>
-        🗓️ <span>{`${date.max}(${maxDay})`}</span>에 가장 많이 검색했고,{' '}
-        <span>{`${date.min}(${minDay})`}</span>에 가장 적게 검색했어요
+        🗓️ <StyledBold>{`${getRenderDateText(date.max)}`}</StyledBold>에 가장
+        많이 검색했고,{' '}
+        <StyledBold>{`${getRenderDateText(date.min)}`}</StyledBold>에 가장 적게
+        검색했어요
       </p>
     </StyledWrapper>
   );
@@ -58,17 +71,15 @@ const StyledWrapper = styled.aside`
   }
 
   p {
-    letter-spacing: 0.15rem;
-    line-height: 120%;
-  }
-
-  span {
-    ${InfinitySansBold};
-    color: var(--text-gray100);
     word-break: break-all;
+    word-wrap: break-word;
+    letter-spacing: 0.15rem;
+    line-height: normal;
   }
 `;
 
-const StyledHighlight = styled.span`
-  background-color: var(--bg-yellow);
+const StyledBold = styled.span<{ highlight?: boolean }>`
+  ${InfinitySansBold};
+  color: var(--text-gray100);
+  background-color: ${({ highlight }) => highlight && 'var(--bg-yellow)'};
 `;
