@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
+const logger = require('morgan');
 
 const app = express();
 const isProd = process.env.NODE_ENV === 'production';
@@ -18,6 +19,7 @@ const http = require('http');
 const https = require('https');
 const shoppingRouter = require('./routes/shopping');
 
+app.use(logger('dev'));
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // 중첩 객체 표현
