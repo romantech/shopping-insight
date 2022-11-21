@@ -10,7 +10,6 @@ import GlobalStyle from 'styles/globalStyle';
 import { isProd } from 'lib/utils';
 import rootReducer, { rootSaga } from './modules';
 import App from './App';
-import 'styles/index.css';
 
 const sagaMiddleware = createSagaMiddleware();
 const enhancer = isProd
@@ -26,12 +25,10 @@ sagaMiddleware.run(rootSaga);
 const rootElement = document.getElementById('root') as Element;
 
 ReactDOM.createRoot(rootElement).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <GlobalStyle />
-      </PersistGate>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <GlobalStyle />
+    </PersistGate>
+    <App />
+  </Provider>,
 );

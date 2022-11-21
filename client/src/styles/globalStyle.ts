@@ -35,13 +35,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
 
-  body {
+  body, input, [class|="ant"] {
     font-family: 'InfinitySans-RegularA1', -apple-system, BlinkMacSystemFont, 'Noto Sans KR', 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
+  }
+  
+  body {
     /* 스크롤바 ::-webkit-scrollbar-track 가로/너비를 지정하면 x축 스크롤바 생김,
        App.tsx 컨테이너에 overflow-x: hidden 속성을 주면,
        아이폰 사파리에서 스크롤할 때 body 태그도 같이 스크롤되는 문제 발생.
@@ -54,6 +56,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   }
+  
+
 
 `;
 

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/default-param-last */
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 type InsightParamsAction = ReturnType<typeof setInsightParams>;
 
@@ -10,8 +10,8 @@ interface InsightParamsState {
 // 파라미터 기본값
 const initialState: InsightParamsState = {
   requiredParams: {
-    startDate: moment().subtract(7, 'days').format('YYYY-MM-DD'),
-    endDate: moment().format('YYYY-MM-DD'),
+    startDate: dayjs().subtract(7, 'days').format('YYYY-MM-DD'),
+    endDate: dayjs().format('YYYY-MM-DD'),
     timeUnit: 'date',
     category: '50000003',
     keyword: '',

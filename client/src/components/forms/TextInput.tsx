@@ -33,7 +33,7 @@ export default function TextInput({
   const tooltipMsg = `최소 ${validLen}글자 이상 입력하세요`;
 
   return (
-    <Tooltip title={tooltipMsg} visible={!isValid && isFocus}>
+    <Tooltip title={tooltipMsg} open={!isValid && isFocus}>
       <Input
         placeholder={placeholder || paramKey}
         onFocus={() => setIsFocus(true)}

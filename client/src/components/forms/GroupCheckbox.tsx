@@ -1,6 +1,6 @@
 import React from 'react';
 import { Checkbox } from 'antd';
-import { CheckboxValueType } from 'antd/lib/checkbox/Group';
+import { CheckboxValueType } from 'antd/es/checkbox/Group';
 
 interface GroupCheckboxProps {
   value: Ages[];
