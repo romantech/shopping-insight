@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
@@ -23,12 +23,15 @@ const persistor = persistStore(store);
 // 선언한 Saga 미들웨어에 등록하고 미들웨어는 계속해서 액션 감지
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <PersistGate persistor={persistor}>
-      <GlobalStyle />
-    </PersistGate>
-    <App />
-  </Provider>,
-  document.getElementById('root'),
+const rootElement = document.getElementById('root') as Element;
+
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <GlobalStyle />
+      </PersistGate>
+      <App />
+    </Provider>
+  </React.StrictMode>,
 );
