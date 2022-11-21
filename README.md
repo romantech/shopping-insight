@@ -3,7 +3,7 @@
 
 > _네이버 Open API에서 제공하는 키워드/연령별 트렌드 데이터를 시각화한 미니 어플리케이션입니다_
 
-- Live Demo : https://shopping-insight.vercel.app
+- Live Demo : https://shopping-insight.romantech.net
 - 작업 기간 : 4일 (리팩토링 / 배포 작업 기간 제외)
 
 ## 사용 스택 (프론트)
