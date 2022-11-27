@@ -3,8 +3,9 @@ import { isProd } from './utils';
 
 /** 배포 환경에선 람다 서버를 통해서 데이터 조회 */
 const prodInstance = axios.create({
-  baseURL: process.env.REACT_APP_LAMDA_BASE_URL,
+  baseURL: process.env.REACT_APP_LAMBDA_BASE_URL,
   timeout: 3000,
+  headers: { 'x-api-key': process.env.REACT_APP_LAMBDA_API_KEY },
 });
 
 /**
