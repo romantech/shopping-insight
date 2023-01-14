@@ -43,8 +43,6 @@
 - AWS Lamda는 월 100만 건(요청), 400,000GB-초(소요시간)까지 무료로 사용할 수 있어 미니 프로젝트에 적합 ↓
 
 ```mermaid
-%%{init: {'theme':'neutral'}}%%
-
 flowchart LR
 C1[Client]
 C2[Client]
