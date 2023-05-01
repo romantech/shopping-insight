@@ -40,7 +40,7 @@
 - 네이버 Open API는 요청 헤더에 `ID`/`Secret`이 노출되므로 브라우저 요청을 허용하지 않음 → CORS 에러 발생
 - 이를 해결하기 위해 [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware) 라이브러리를 사용할 수 있지만 개발 환경에서만 사용 가능
 - AWS EC2 인스턴스에 간단한 서버를 구축하는 방법도 있지만 단순 CORS 오류 대응 용도로는 낭비라고 판단
-- AWS Lamda는 월 100만 건(요청), 400,000GB-초(소요시간)까지 무료로 사용할 수 있어 미니 프로젝트에 적합 ↓
+- AWS Lambda는 월 100만 건(요청), 400,000GB-초(소요시간)까지 무료로 사용할 수 있어 미니 프로젝트에 적합 ↓
 
 ```mermaid
 flowchart LR
