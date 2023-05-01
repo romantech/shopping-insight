@@ -6,12 +6,12 @@ import { categoryList } from './constants';
 export const isProd = process.env.NODE_ENV === 'production';
 
 export const LineChartLegendColor = {
-  '10': '#C0392B ',
-  '20': '#AF7AC5',
-  '30': '#5DADE2',
-  '40': '#1E8449',
-  '50': '#D4AC0D',
-  '60': '#2C3E50 ',
+  10: '#C0392B ',
+  20: '#AF7AC5',
+  30: '#5DADE2',
+  40: '#1E8449',
+  50: '#D4AC0D',
+  60: '#2C3E50 ',
 };
 
 export type LineColors = typeof LineChartLegendColor[Ages];
@@ -40,23 +40,17 @@ export const checkValidKoWords = (str: string, validLen: number): boolean => {
 export function extractChartDataAndGroup(data: Data[]) {
   const groups: Set<Ages> = new Set();
 
-  const metrics = data?.reduce((acc, cur) => {
-    const idx = acc.findIndex(el => el.period === cur.period);
-    if (!groups.has(cur.group)) groups.add(cur.group);
+  const mutatedMetrics = data?.reduce((metrics, { period, group, ratio }) => {
+    const idx = metrics.findIndex(el => el.period === period);
+    if (!groups.has(group)) groups.add(group);
 
-    if (idx === -1) {
-      acc.push({
-        period: cur.period,
-        [cur.group]: cur.ratio,
-      });
-    } else {
-      acc[idx][cur.group] = cur.ratio;
-    }
+    if (idx === -1) metrics.push({ period, [group]: ratio });
+    else metrics[idx][group] = ratio;
 
-    return acc;
+    return metrics;
   }, [] as Metric[]);
 
-  return { groups: [...groups].sort(), metrics } as const;
+  return { groups: [...groups].sort(), metrics: mutatedMetrics } as const;
 }
 
 export const getCategoryName = (categoryKey: Category | null) => {
