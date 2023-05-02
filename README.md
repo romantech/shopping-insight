@@ -49,7 +49,7 @@ C2[Client]
 L(API Gateway)
 N(Naver Open API)
 
-subgraph R1[AWS Lamda]
+subgraph R1[AWS Lambda]
 direction LR
 L -->|Request| N -->|Response| L
 end
