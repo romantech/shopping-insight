@@ -55,6 +55,7 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "http-proxy-middleware": "^2.0.6",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "yarn-audit-fix": "^9.3.10"
   }
 }
