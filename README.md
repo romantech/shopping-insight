@@ -8,15 +8,16 @@
 
 ## 사용 스택 (클라이언트)
 
-- React + TypeScript
-- Redux + Saga
-- Styled-Components + Ant Design
-- ESLint(Airbnb 규칙) + Prettier
+- React / TypeScript
+- Redux / Saga
+- Styled-Components / Ant Design
+- ESLint(Airbnb 규칙) / Prettier
+- Recharts
 
 ## 구현 내역
 
 - 네이버 Open API [키워드/연령별 트렌드 조회 데이터](https://bit.ly/3i5lES4) 사용
-- 차트 라이브러리([Rechart](https://recharts.org/))를 이용해 연령별 라인 차트 시각화
+- 차트 라이브러리([Recharts](https://recharts.org/))를 이용해 연령별 라인 차트 시각화
 - 사용자가 선택한 검색 파라미터 및 렌더링 완료한 차트 데이터는 리덕스 상태로 저장
   - (필수 / 기본값 지정) 시작/종료 날짜 : Single Date Picker
   - (필수 / 기본값 지정) 구간 단위 : 단일 선택 Form
