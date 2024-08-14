@@ -10,7 +10,7 @@
     "@types/react-dom": "18",
     "@vercel/analytics": "^1.0.1",
     "antd": "^5.0.0",
-    "axios": "^1.6.0",
+    "axios": "^1.7.4",
     "dayjs": "^1.11.6",
     "react": "18",
     "react-dom": "18",
