@@ -1,6 +1,7 @@
 {
   "name": "shopping-insight-client",
   "version": "0.1.0",
+  "packageManager": "yarn@1.22.22",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.8.0",

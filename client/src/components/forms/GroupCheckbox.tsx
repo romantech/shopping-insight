@@ -1,6 +1,5 @@
 import React from 'react';
 import { Checkbox } from 'antd';
-import { CheckboxValueType } from 'antd/es/checkbox/Group';
 
 interface GroupCheckboxProps {
   value: Ages[];
@@ -15,7 +14,7 @@ export default function GroupCheckbox({
   callback,
   paramKey,
 }: GroupCheckboxProps): JSX.Element {
-  const onChangeHandler = (checkedValues: Array<CheckboxValueType>) => {
+  const onChangeHandler = (checkedValues: Array<string | number>) => {
     callback(paramKey, checkedValues);
   };
 
