@@ -3,16 +3,16 @@
 
 > _네이버 Open API에서 제공하는 키워드/연령별 트렌드 데이터를 시각화한 미니 어플리케이션입니다_
 
-- Live Demo : https://shopping-insight.romantech.net
+- Live Demo: https://shopping-insight.romantech.net
 - 작업 기간 : 4일 (리팩토링 / 배포 작업 기간 제외)
 
 ## 사용 스택 (클라이언트)
-
-- React / TypeScript
-- Redux / Saga
-- Styled-Components / Ant Design
-- ESLint(Airbnb 규칙) / Prettier
-- Recharts
+- Core: React + TypeScript
+- State Management: Redux / Saga
+- UI Library: Ant Design
+- Styling: Styled-Components
+- Code Quality: ESLint (Airbnb 규칙) / Prettier
+- Charts: Recharts
 
 ## 구현 내역
 
