@@ -20,9 +20,9 @@ export default function FieldContainer({
 }: FieldContainerProps): JSX.Element {
   const dispatch = useDispatch();
 
-  const {
-    insightParams: { requiredParams, optionalParams },
-  } = useSelector((state: RootState) => state);
+  const { requiredParams, optionalParams } = useSelector(
+    ({ insightParams }: RootState) => insightParams,
+  );
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
