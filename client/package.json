@@ -55,7 +55,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "http-proxy-middleware": "^2.0.7",
+    "http-proxy-middleware": "^2.0.9",
     "prettier": "2.7.1"
   }
 }
