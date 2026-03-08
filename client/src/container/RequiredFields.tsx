@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import {
   categoryList,
   END_DATE_TXT,
@@ -12,7 +12,7 @@ import SingleDatePicker from 'components/forms/SingleDatePicker';
 import SelectForm from 'components/forms/SelectForm';
 import TextInput from 'components/forms/TextInput';
 import RadioButton from 'components/forms/RadioButton';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { EmptyElement, InfinitySansBold } from '../styles/commonStyles';
 
 interface RequiredFieldsProps {
@@ -25,7 +25,7 @@ export default function RequiredFields({
   params,
   handler,
   children,
-}: RequiredFieldsProps): JSX.Element {
+}: RequiredFieldsProps) {
   const limitDate = '2017-08-01';
 
   return (
@@ -79,6 +79,7 @@ export default function RequiredFields({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const StyledFieldWrapper = styled.div`
   max-width: 100%;
   display: flex;

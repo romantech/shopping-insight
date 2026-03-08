@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components/macro';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
@@ -15,9 +15,7 @@ interface FieldContainerProps {
   isLoading: boolean;
 }
 
-export default function FieldContainer({
-  isLoading,
-}: FieldContainerProps): JSX.Element {
+export default function FieldContainer({ isLoading }: FieldContainerProps) {
   const dispatch = useDispatch();
 
   const { requiredParams, optionalParams } = useSelector(

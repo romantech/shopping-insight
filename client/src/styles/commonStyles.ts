@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/macro';
+import styled, { css } from 'styled-components';
 
 export const ScrollStylePC = css`
   /* 정밀 포인팅 장치를 위한(터치가 아닌 장치) CSS */

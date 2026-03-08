@@ -8,10 +8,11 @@
 
 ## 사용 스택 (클라이언트)
 - Core: React + TypeScript
+- Build Tool: Vite
 - State Management: Redux / Saga
 - UI Library: Ant Design
 - Styling: Styled-Components
-- Code Quality: ESLint (Airbnb 규칙) / Prettier
+- Code Quality: ESLint v10 (Flat Config) / Prettier
 - Charts: Recharts
 
 ## 구현 내역
@@ -62,5 +63,5 @@ C1 --->|Trigger| R1 --->|Data| C2
 
 1. **레포지토리 클론 :** `git clone https://github.com/romantech/shopping-insight.git`
 2. **종속성 설치 :** `npm install`
-3. **환경 변수 세팅 :** `REACT_APP_NAVER_CLIENT_[ID|SECRET]` 입력 ([네이버 개발자 센터](https://developers.naver.com/apps/#/register)에서 API Key 발급 필요)
-4. **프로젝트 시작 :** `npm start`
+3. **환경 변수 세팅 :** `VITE_NAVER_CLIENT_[ID|SECRET]` 입력 ([네이버 개발자 센터](https://developers.naver.com/apps/#/register)에서 API Key 발급 필요)
+4. **프로젝트 시작 :** `npm run dev`

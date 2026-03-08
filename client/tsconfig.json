@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "target": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "lib": ["ES2015", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -16,10 +16,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "downlevelIteration": true,
+    "types": ["vite/client", "react", "react-dom"],
     "typeRoots": ["./node_modules/@types", "./src/types"],
     "baseUrl": "src"
     // src 폴더를 기준 절대경로 설정 ex) components/hello.tsx
   },
-  "include": ["babel-plugin-macros.config.js", ".eslintrc.js", "./src/**/*"],
+  "include": ["./src/**/*", "./vite.config.ts", "./eslint.config.cjs"],
   "exclude": ["node_modules", "dist"]
 }

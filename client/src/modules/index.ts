@@ -1,23 +1,27 @@
-import { combineReducers } from 'redux';
+import { combineReducers, type Reducer } from 'redux';
 import { all } from 'redux-saga/effects';
-import { persistReducer } from 'redux-persist';
+import { type PersistConfig, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import insightParams from './insightParams';
 import insightData from './insightData';
 import insightDataSaga from './saga/insightDataSaga';
 
-const persistConfig = {
-  key: 'root',
+const rootReducer = combineReducers({ insightParams, insightData });
+export type RootState = ReturnType<typeof rootReducer>;
+
+const persistConfig: PersistConfig<RootState> = {
+  key: 'root-v2',
   storage,
   whitelist: ['insightParams', 'insightData'],
   // blacklist: [], // 블랙리스트에 있는 항목을 제외하고 모두 포함
 };
 
-const rootReducer = combineReducers({ insightParams, insightData });
+const persistedReducer = persistReducer<RootState>(
+  persistConfig,
+  rootReducer as unknown as Reducer<RootState>,
+);
 
-export default persistReducer(persistConfig, rootReducer);
-
-export type RootState = ReturnType<typeof rootReducer>;
+export default persistedReducer;
 
 // Saga 실행 과정
 // ⑴Action Dispatch ⑵Saga 미들웨어 실행(takeLatest) ⑶비동기 통신(yield call)

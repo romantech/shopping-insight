@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { FlexCenterColumn, InfinitySansBold } from 'styles/commonStyles';
 import { getDayOfWeek, getWeekOfMonth, SummaryData } from 'lib/utils';
@@ -11,7 +10,7 @@ interface TextSummaryProps {
 export default function TextSummary({
   summaryData,
   hasGroup,
-}: TextSummaryProps): JSX.Element {
+}: TextSummaryProps) {
   const { startDate, endDate, keyword, age, date, category, timeUnit } =
     summaryData;
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   CartesianGrid,
   Legend,
@@ -23,7 +22,7 @@ export default function SimpleLineChart({
   groups,
   groupName,
   xAxisDataKey,
-}: SimpleLineChartProps): JSX.Element {
+}: SimpleLineChartProps) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart

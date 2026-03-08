@@ -1,7 +1,6 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { Empty, Spin } from 'antd';
 import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
 import FieldContainer from 'container/FieldContainer';
@@ -10,7 +9,7 @@ import TextSummary from 'components/TextSummary';
 import { INTRODUCE_MSG, NO_DATA_MSG } from 'lib/constants';
 import { getTextSummaryData, SummaryData } from 'lib/utils';
 
-export default function ShoppingInsight(): JSX.Element {
+export default function ShoppingInsight() {
   const { loading, renderData, rawData, error } = useSelector(
     (state: RootState) => state.insightData,
   );

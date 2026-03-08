@@ -17,7 +17,7 @@ export default function TextInput({
   width,
   validLen = 1,
   placeholder,
-}: TextInputProps): JSX.Element {
+}: TextInputProps) {
   const [isValid, setIsValid] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
 
