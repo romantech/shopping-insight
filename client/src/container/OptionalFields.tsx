@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   ageList,
   deviceList,
@@ -9,6 +8,7 @@ import RadioButton from 'components/forms/RadioButton';
 import GroupCheckbox from 'components/forms/GroupCheckbox';
 import { StyledFieldWrapper } from './RequiredFields';
 import { EmptyElement } from '../styles/commonStyles';
+import type React from 'react';
 
 interface OptionalFieldsProps {
   params: OptionalParams;
@@ -20,7 +20,7 @@ export default function OptionalFields({
   params,
   handler,
   children,
-}: OptionalFieldsProps): JSX.Element {
+}: OptionalFieldsProps) {
   return (
     <StyledFieldWrapper>
       <h1>{OPTIONAL_FIELD_TXT}</h1>
@@ -43,7 +43,7 @@ export default function OptionalFields({
         paramKey="device"
       />
       {children}
-      <EmptyElement padding="0 0.8rem 0 0" height="100%" />
+      <EmptyElement $padding="0 0.8rem 0 0" $height="100%" />
     </StyledFieldWrapper>
   );
 }

@@ -15,7 +15,7 @@ export default function RadioButton({
   callback,
   paramKey,
   size = 'large',
-}: RadioButtonProps): JSX.Element {
+}: RadioButtonProps) {
   const onChangeHandler = (e: RadioChangeEvent) => {
     callback(paramKey, e.target.value);
   };

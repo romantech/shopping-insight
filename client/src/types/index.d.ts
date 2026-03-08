@@ -1,10 +1,3 @@
-// process.env 타입
-declare namespace NodeJS {
-  interface ProcessEnv {
-    [key: string]: string;
-  }
-}
-
 type ValueType = string | number | boolean;
 type InsightParamsHandler = (
   type: RequestParamKeys,

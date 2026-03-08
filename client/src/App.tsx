@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import ShoppingInsight from 'pages/ShoppingInsight';
 import { Analytics } from '@vercel/analytics/react';
 
-export default function App(): JSX.Element {
+export default function App() {
   return (
     <StyledWrapper>
       <ShoppingInsight />

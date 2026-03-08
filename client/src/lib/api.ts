@@ -3,19 +3,19 @@ import { isProd } from './utils';
 
 /** 배포 환경에선 람다 서버를 통해서 데이터 조회 */
 const prodInstance = axios.create({
-  baseURL: process.env.REACT_APP_LAMBDA_BASE_URL,
+  baseURL: import.meta.env.VITE_LAMBDA_BASE_URL,
   timeout: 3000,
-  headers: { 'x-api-key': process.env.REACT_APP_LAMBDA_API_KEY },
+  headers: { 'x-api-key': import.meta.env.VITE_LAMBDA_API_KEY },
 });
 
 /**
  * 개발 환경에선 Proxy 이용해서 네이버 API 로 직접 요청
- * src/setupProxy.js - target 속성에 입력한 주소가 기본 적용됨
+ * vite.config.ts - server.proxy 에 입력한 target 주소가 기본 적용됨
  * */
 const devInstance = axios.create({
   headers: {
-    'X-Naver-Client-Id': process.env.REACT_APP_NAVER_CLIENT_ID,
-    'X-Naver-Client-Secret': process.env.REACT_APP_NAVER_CLIENT_SECRET,
+    'X-Naver-Client-Id': import.meta.env.VITE_NAVER_CLIENT_ID,
+    'X-Naver-Client-Secret': import.meta.env.VITE_NAVER_CLIENT_SECRET,
   },
 });
 

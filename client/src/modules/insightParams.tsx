@@ -35,7 +35,7 @@ export const setInsightParams = (
     paramType,
     paramKey,
     payload,
-  } as const);
+  }) as const;
 
 export default function reducer(
   state = initialState,

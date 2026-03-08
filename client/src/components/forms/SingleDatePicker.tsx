@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DatePicker, Space, Tooltip } from 'antd';
 import { END_DATE_TXT, START_DATE_TXT, TODAY_DATE_TXT } from 'lib/constants';
 import dayjs, { Dayjs } from 'dayjs';
@@ -26,7 +25,7 @@ export default function SingleDatePicker({
   size = 'large',
   width,
   placeholder,
-}: SingleDatePickerProps): JSX.Element {
+}: SingleDatePickerProps) {
   const [isValid, setIsValid] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
 
@@ -49,7 +48,7 @@ export default function SingleDatePicker({
 
   return (
     <Tooltip title={toolTipMsg} open={!isValid && isFocus}>
-      <Space direction="vertical">
+      <Space orientation="vertical">
         <DatePicker
           placeholder={placeholder || paramKey}
           onFocus={() => setIsFocus(true)}

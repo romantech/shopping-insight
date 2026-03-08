@@ -1,4 +1,3 @@
-import React from 'react';
 import { Checkbox } from 'antd';
 
 interface GroupCheckboxProps {
@@ -13,7 +12,7 @@ export default function GroupCheckbox({
   options,
   callback,
   paramKey,
-}: GroupCheckboxProps): JSX.Element {
+}: GroupCheckboxProps) {
   const onChangeHandler = (checkedValues: Array<string | number>) => {
     callback(paramKey, checkedValues);
   };

@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 // export type LineTypeKeys = keyof typeof LineChartLegendColor;
 
 import { categoryList } from './constants';
 
-export const isProd = process.env.NODE_ENV === 'production';
+export const isProd = import.meta.env.PROD;
 
 export const LineChartLegendColor = {
   10: '#C0392B ',
@@ -14,7 +13,7 @@ export const LineChartLegendColor = {
   60: '#2C3E50 ',
 };
 
-export type LineColors = typeof LineChartLegendColor[Ages];
+export type LineColors = (typeof LineChartLegendColor)[Ages];
 export const getLineColor = (group: Ages): LineColors => {
   return LineChartLegendColor[group];
 };
@@ -71,10 +70,13 @@ export const computeMaxAndMin = (data: Record<string, number>) => {
 };
 
 export function getMaxMinAge(rawData: InsightResponse) {
-  const sumOfRatioByAge = rawData.results[0].data.reduce((acc, cur) => {
-    acc[cur.group] = (acc[cur.group] || 0) + cur.ratio;
-    return acc;
-  }, {} as Record<string, number>);
+  const sumOfRatioByAge = rawData.results[0].data.reduce(
+    (acc, cur) => {
+      acc[cur.group] = (acc[cur.group] || 0) + cur.ratio;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
 
   return computeMaxAndMin(sumOfRatioByAge);
 }

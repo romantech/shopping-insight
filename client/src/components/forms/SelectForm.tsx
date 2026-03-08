@@ -1,4 +1,3 @@
-import React from 'react';
 import { Select } from 'antd';
 
 const { Option } = Select;
@@ -21,7 +20,7 @@ export default function SelectForm({
   size = 'large',
   width,
   placeholder,
-}: SelectFormProps): JSX.Element {
+}: SelectFormProps) {
   return (
     <Select
       onChange={v => callback(paramKey, v)}
