@@ -1,13 +1,15 @@
+import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'modules';
 import styled from 'styled-components';
 import { Empty, Spin } from 'antd';
 import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
 import FieldContainer from 'container/FieldContainer';
-import SimpleLineChart from 'components/charts/SimpleLineChart';
 import TextSummary from 'components/TextSummary';
 import { INTRODUCE_MSG, NO_DATA_MSG } from 'lib/constants';
 import { getTextSummaryData, SummaryData } from 'lib/utils';
+
+const SimpleLineChart = lazy(() => import('components/charts/SimpleLineChart'));
 
 export default function ShoppingInsight() {
   const { loading, renderData, rawData, error } = useSelector(
@@ -31,12 +33,14 @@ export default function ShoppingInsight() {
         ) : hasData && error === null ? (
           <>
             <StyledChartArea>
-              <SimpleLineChart
-                metrics={renderData.metrics}
-                groups={renderData.groups}
-                groupName="대"
-                xAxisDataKey="period"
-              />
+              <Suspense fallback={<Spin size="large" />}>
+                <SimpleLineChart
+                  metrics={renderData.metrics}
+                  groups={renderData.groups}
+                  groupName="대"
+                  xAxisDataKey="period"
+                />
+              </Suspense>
             </StyledChartArea>
             <StyledTextSummaryArea>
               <TextSummary
