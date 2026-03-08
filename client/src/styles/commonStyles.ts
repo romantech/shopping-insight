@@ -41,9 +41,16 @@ export const FlexCenterColumn = css`
   flex-direction: column;
 `;
 
-export const EmptyElement = styled.div<{ [key in string]?: string }>`
-  width: ${props => props.width || 'fit-content'};
-  height: ${props => props.height || 'fit-content'};
-  padding: ${props => props.padding};
-  margin: ${props => props.margin};
+interface EmptyElementProps {
+  $width?: string;
+  $height?: string;
+  $padding?: string;
+  $margin?: string;
+}
+
+export const EmptyElement = styled.div<EmptyElementProps>`
+  width: ${({ $width }) => $width || 'fit-content'};
+  height: ${({ $height }) => $height || 'fit-content'};
+  padding: ${({ $padding }) => $padding};
+  margin: ${({ $margin }) => $margin};
 `;

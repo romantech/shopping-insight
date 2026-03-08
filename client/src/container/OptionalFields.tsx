@@ -43,7 +43,7 @@ export default function OptionalFields({
         paramKey="device"
       />
       {children}
-      <EmptyElement padding="0 0.8rem 0 0" height="100%" />
+      <EmptyElement $padding="0 0.8rem 0 0" $height="100%" />
     </StyledFieldWrapper>
   );
 }

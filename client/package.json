@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^4.8.3",
-    "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "@ant-design/icons": "^6.1.0",
     "@redux-devtools/extension": "^3.3.0",
     "@vercel/analytics": "^1.6.1",
-    "antd": "^5.29.3",
+    "antd": "^6.3.1",
     "axios": "^1.13.6",
     "dayjs": "^1.11.19",
     "react": "^19.2.4",
@@ -17,7 +16,7 @@
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.4.2",
-    "styled-components": "^5.3.11",
+    "styled-components": "^6.3.11",
     "styled-reset": "^4.5.2"
   },
   "scripts": {
@@ -32,7 +31,6 @@
     "@types/node": "^25.3.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@types/styled-components": "^5.1.36",
     "@vitejs/plugin-react-swc": "^4.2.3",
     "eslint": "^10.0.3",
     "eslint-config-prettier": "^10.1.8",

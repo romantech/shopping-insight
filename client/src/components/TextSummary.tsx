@@ -33,13 +33,13 @@ export default function TextSummary({
         💸 <StyledBold>{`${getRenderDateText(startDate)}`}</StyledBold>부터{' '}
         <StyledBold>{`${getRenderDateText(endDate)}`}</StyledBold>까지{' '}
         <StyledBold>{category}</StyledBold> 카테고리의{' '}
-        <StyledBold highlight>{keyword}</StyledBold> 키워드는{' '}
+        <StyledBold $highlight>{keyword}</StyledBold> 키워드는{' '}
         <StyledBold>{age.max}대</StyledBold>가 가장 큰 관심을 보였어요
       </p>
       {hasGroup && (
         <p>
           😢 하지만 <StyledBold>{age.min}대</StyledBold>는 다른 연령대에 비해{' '}
-          <StyledBold highlight>{keyword}</StyledBold>에 별로 관심이 없는 것
+          <StyledBold $highlight>{keyword}</StyledBold>에 별로 관심이 없는 것
           같네요
         </p>
       )}
@@ -77,8 +77,8 @@ const StyledWrapper = styled.aside`
   }
 `;
 
-const StyledBold = styled.span<{ highlight?: boolean }>`
+const StyledBold = styled.span<{ $highlight?: boolean }>`
   ${InfinitySansBold};
   color: var(--text-gray100);
-  background-color: ${({ highlight }) => highlight && 'var(--bg-yellow)'};
+  background-color: ${({ $highlight }) => $highlight && 'var(--bg-yellow)'};
 `;

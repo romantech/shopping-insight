@@ -71,7 +71,7 @@ export default function RequiredFields({
         paramKey="timeUnit"
       />
       {children}
-      <EmptyElement padding="0 0.8rem 0 0" height="100%" />
+      <EmptyElement $padding="0 0.8rem 0 0" $height="100%" />
       {/* 자식 요소 <StyledFieldWrapper> 너비가 길어서 생긴 스크롤이
       부모 요소 <FieldContainer> 에 나타나도록 작성함. 이때 스크롤 끝 여백이
       없는 것처럼 보이므로 마지막에 빈 요소 <EmptyElement 추가함 */}

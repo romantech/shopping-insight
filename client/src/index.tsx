@@ -1,6 +1,4 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '@ant-design/v5-patch-for-react-19';
 import 'styles/variables.css';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { PersistGate } from 'redux-persist/integration/react';

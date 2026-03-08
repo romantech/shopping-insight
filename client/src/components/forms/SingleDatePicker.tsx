@@ -48,7 +48,7 @@ export default function SingleDatePicker({
 
   return (
     <Tooltip title={toolTipMsg} open={!isValid && isFocus}>
-      <Space direction="vertical">
+      <Space orientation="vertical">
         <DatePicker
           placeholder={placeholder || paramKey}
           onFocus={() => setIsFocus(true)}
