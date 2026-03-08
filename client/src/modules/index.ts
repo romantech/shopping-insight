@@ -6,8 +6,12 @@ import insightParams from './insightParams';
 import insightData from './insightData';
 import insightDataSaga from './saga/insightDataSaga';
 
-const rootReducer = combineReducers({ insightParams, insightData });
-export type RootState = ReturnType<typeof rootReducer>;
+const combinedReducer = combineReducers({ insightParams, insightData });
+export type RootState = ReturnType<typeof combinedReducer>;
+type RootAction = Parameters<typeof combinedReducer>[1];
+
+const rootReducer: Reducer<RootState, RootAction> = (state, action) =>
+  combinedReducer(state, action);
 
 const persistConfig: PersistConfig<RootState> = {
   key: 'root-v2',
@@ -16,9 +20,9 @@ const persistConfig: PersistConfig<RootState> = {
   // blacklist: [], // 블랙리스트에 있는 항목을 제외하고 모두 포함
 };
 
-const persistedReducer = persistReducer<RootState>(
+const persistedReducer = persistReducer<RootState, RootAction>(
   persistConfig,
-  rootReducer as unknown as Reducer<RootState>,
+  rootReducer,
 );
 
 export default persistedReducer;
