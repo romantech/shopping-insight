@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import SearchOutlined from '@ant-design/icons/SearchOutlined';
 import { RootState } from 'modules';
 import { SEARCH_BTN_TXT } from 'lib/constants';
 import { setInsightParams } from 'modules/insightParams';
