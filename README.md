@@ -12,7 +12,7 @@
 - State Management: Redux / Saga
 - UI Library: Ant Design
 - Styling: Styled-Components
-- Code Quality: ESLint v10 (Flat Config) / Prettier
+- Code Quality: Biome
 - Charts: Recharts
 
 ## 구현 내역

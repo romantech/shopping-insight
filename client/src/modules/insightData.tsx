@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/default-param-last */
 // duck 패턴
 
 type InsightDataAction =

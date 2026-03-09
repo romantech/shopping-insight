@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import ShoppingInsight from 'pages/ShoppingInsight';
 import { Analytics } from '@vercel/analytics/react';

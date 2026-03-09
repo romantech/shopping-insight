@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FlexCenterColumn, InfinitySansBold } from 'styles/commonStyles';
-import { getDayOfWeek, getWeekOfMonth, SummaryData } from 'lib/utils';
+import { getDayOfWeek, getWeekOfMonth, type SummaryData } from 'lib/utils';
 
 interface TextSummaryProps {
   summaryData: SummaryData;

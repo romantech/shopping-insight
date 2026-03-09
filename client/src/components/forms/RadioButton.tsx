@@ -1,5 +1,4 @@
-import React from 'react';
-import { Radio, RadioChangeEvent } from 'antd';
+import { Radio, type RadioChangeEvent } from 'antd';
 
 interface RadioButtonProps {
   value: TimeUnit | Gender | Device;

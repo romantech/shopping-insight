@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/default-param-last */
 import dayjs from 'dayjs';
 
 type InsightParamsAction = ReturnType<typeof setInsightParams>;

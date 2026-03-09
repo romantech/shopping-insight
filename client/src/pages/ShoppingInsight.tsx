@@ -1,13 +1,13 @@
 import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from 'modules';
+import type { RootState } from 'modules';
 import styled from 'styled-components';
 import { Empty, Spin } from 'antd';
 import { FlexCenterColumn, FlexCenterRow } from 'styles/commonStyles';
 import FieldContainer from 'container/FieldContainer';
 import TextSummary from 'components/TextSummary';
 import { INTRODUCE_MSG, NO_DATA_MSG } from 'lib/constants';
-import { getTextSummaryData, SummaryData } from 'lib/utils';
+import { getTextSummaryData, type SummaryData } from 'lib/utils';
 
 const SimpleLineChart = lazy(() => import('components/charts/SimpleLineChart'));
 
