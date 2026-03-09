@@ -1,4 +1,4 @@
-import axios, { AxiosPromise, CancelTokenSource } from 'axios';
+import axios, { type AxiosPromise, type CancelTokenSource } from 'axios';
 import { isProd } from './utils';
 
 /** 배포 환경에선 람다 서버를 통해서 데이터 조회 */

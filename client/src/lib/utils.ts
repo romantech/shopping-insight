@@ -60,8 +60,8 @@ export const computeMaxAndMin = (data: Record<string, number>) => {
   const valueList = Object.values(data);
   const keyList = Object.keys(data);
 
-  const maxRatioIdx = valueList.findIndex(v => v === Math.max(...valueList));
-  const minRatioIdx = valueList.findIndex(v => v === Math.min(...valueList));
+  const maxRatioIdx = valueList.indexOf(Math.max(...valueList));
+  const minRatioIdx = valueList.indexOf(Math.min(...valueList));
 
   return {
     max: keyList[maxRatioIdx],

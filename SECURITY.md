@@ -2,20 +2,16 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+This repository is maintained by a single maintainer.
+Security fixes are provided on a best-effort basis for the latest `main` branch only.
+Older commits, tags, or forks are not supported.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+Please do not report security issues in public issues.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+1. Use GitHub's private vulnerability reporting (Security tab -> Report a vulnerability) when available.
+2. If private reporting is not available, open an issue with `[SECURITY]` in the title and share only minimal details. I will follow up for private communication.
+
+I aim to acknowledge reports within 7 days and share a status update as available.
+Fix timelines are not guaranteed for this project.

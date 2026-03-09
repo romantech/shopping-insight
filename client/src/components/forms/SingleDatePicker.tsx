@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { DatePicker, Space, Tooltip } from 'antd';
 import { END_DATE_TXT, START_DATE_TXT, TODAY_DATE_TXT } from 'lib/constants';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 
 interface SingleDatePickerProps {
   value: string;
@@ -33,7 +33,7 @@ export default function SingleDatePicker({
     setIsValid(value.length > 0);
   }, [value]);
 
-  const onChangeHandler = (date: Dayjs) => {
+  const onChangeHandler = (date: Dayjs | null) => {
     const validDate =
       date?.isAfter(dayjs(startDate || limitDate).subtract(1, 'day')) &&
       date?.isBefore(dayjs(endDate || new Date()).add(endDate ? 1 : 0, 'day'));
@@ -57,7 +57,7 @@ export default function SingleDatePicker({
           size={size}
           value={value ? dayjs(value) : null}
           status={!isValid && isFocus ? 'error' : ''}
-          onChange={date => onChangeHandler(date!)}
+          onChange={date => onChangeHandler(date)}
         />
       </Space>
     </Tooltip>

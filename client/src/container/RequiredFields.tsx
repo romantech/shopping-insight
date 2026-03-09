@@ -79,7 +79,6 @@ export default function RequiredFields({
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const StyledFieldWrapper = styled.div`
   max-width: 100%;
   display: flex;

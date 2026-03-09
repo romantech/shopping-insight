@@ -21,6 +21,6 @@
     "baseUrl": "src"
     // src 폴더를 기준 절대경로 설정 ex) components/hello.tsx
   },
-  "include": ["./src/**/*", "./vite.config.ts", "./eslint.config.cjs"],
+  "include": ["./src/**/*", "./vite.config.ts"],
   "exclude": ["node_modules", "dist"]
 }
