@@ -2,7 +2,7 @@
   "name": "shopping-insight-client",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@11.8.0",
+  "packageManager": "pnpm@10.16.0",
   "dependencies": {
     "@ant-design/icons": "^6.2.5",
     "@redux-devtools/extension": "^3.3.0",
