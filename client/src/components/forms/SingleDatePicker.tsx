@@ -38,7 +38,7 @@ export default function SingleDatePicker({
       date?.isAfter(dayjs(startDate || limitDate).subtract(1, 'day')) &&
       date?.isBefore(dayjs(endDate || new Date()).add(endDate ? 1 : 0, 'day'));
 
-    callback(paramKey, validDate ? date.format('YYYY-MM-DD') : '');
+    callback(paramKey, date && validDate ? date.format('YYYY-MM-DD') : '');
   };
 
   const toolTipMsg =
