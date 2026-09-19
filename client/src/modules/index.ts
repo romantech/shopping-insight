@@ -1,7 +1,7 @@
 import { combineReducers, type Reducer } from 'redux';
 import { all } from 'redux-saga/effects';
 import { type PersistConfig, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/es/storage';
 import insightParams from './insightParams';
 import insightData from './insightData';
 import insightDataSaga from './saga/insightDataSaga';
