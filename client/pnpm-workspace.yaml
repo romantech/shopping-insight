@@ -1,10 +1,4 @@
 packages:
   - '.'
 
-onlyBuiltDependencies:
-  - '@swc/core'
-
 minimumReleaseAge: 10080
-
-overrides:
-  esbuild: 0.28.1
