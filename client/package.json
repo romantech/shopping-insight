@@ -2,6 +2,7 @@
   "name": "shopping-insight-client",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@10.16.0",
   "dependencies": {
     "@ant-design/icons": "^6.3.4",
